@@ -2,6 +2,7 @@ import { useForm } from '../../hooks/useForm';
 import Description from './Description';
 import { useNavigate } from 'react-router-dom';
 import { createStory } from '../../service/petService';
+import styles from '../../styles/Create.module.css';
 
 
 export default function CreatePost({setPets}) {
@@ -24,12 +25,13 @@ export default function CreatePost({setPets}) {
     }
 
     return (
-        <div className="create-wrapper">
-            <img src="images/guinea pig-create.png" alt="guinea-pig" className="quinea-pig-img" />
+       
+        <div className={styles["create-wrapper"]}>
+            <img src="images/guinea pig-create.png" alt="guinea-pig" className={styles["quinea-pig-img"]} />
             <Description />
             <form onSubmit={submitHandler}>
-                <fieldset className="field create-field">
-                    <div className="left-container">
+                <fieldset className={`${styles.field} ${styles["create-field"]}`}>
+                    <div className={styles["left-container"]}>
                         <div>
                             <label htmlFor="name">Pet Name:</label>
                             <input
@@ -57,7 +59,7 @@ export default function CreatePost({setPets}) {
                                 value={data.breed || ""}
                                 onChange={onChangeHandler} />
                         </div>
-                        <div className="gender-wrapper">
+                        <div className={styles["gender-wrapper"]}>
                             <p>Gender:</p>
                             <label htmlFor="male">male</label>
                             <input
@@ -87,7 +89,7 @@ export default function CreatePost({setPets}) {
                                 onChange={onChangeHandler} />
                         </div>
                     </div>
-                    <div className="right-container">
+                    <div className={styles["right-container"]}>
                         <label htmlFor="petStory">Pet Story:</label>
                         <textarea
                             name="petStory"
@@ -102,7 +104,7 @@ export default function CreatePost({setPets}) {
                     <button type="submit" className="submit-btn">Create Story</button>
                 </fieldset>
             </form>
-            <img src="images/bunny-create.png" alt="bunny" className="bunny-img" />
+            <img src="images/bunny-create.png" alt="bunny" className={styles["bunny-img"]} />
         </div>
     )
 }

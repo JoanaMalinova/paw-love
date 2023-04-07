@@ -22,31 +22,34 @@ async function requester(method, url, data) {
 
         if (res.status === 204) {
             return res;
+        }       
+
+        if (res.ok === false) {
+
+            if (res.status === 403) {              
+                const result = await res.json();
+                return result.message;               
+            }
+            if (res.status === 404) {
+                return
+            }
         }
 
         const result = await res.json();
 
-        if (res.ok === false) {
-            if (res.status === 403) {
-                localStorage.removeItem('user');
-            }
-            throw new Error(result.message)
-        }
-
         return result;
     }
     catch (err) {
-        alert(err.message)
-        throw err;
+        console.log(err.message);
     }
 }
 
-const get =  requester.bind(null, "GET");
+const get = requester.bind(null, "GET");
 const post = requester.bind(null, "POST");
 const put = requester.bind(null, "PUT");
 const patch = requester.bind(null, "PATCH");
 const del = requester.bind(null, "DELETE");
 
-export {get, post, put, patch, del}
+export { get, post, put, patch, del }
 
 

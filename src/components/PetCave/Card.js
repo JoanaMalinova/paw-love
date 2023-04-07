@@ -1,4 +1,5 @@
 import {useNavigate} from 'react-router-dom';
+import styles from "../../styles/PetCave.module.css";
 
 export default function Card({pet}){
 
@@ -9,9 +10,9 @@ export default function Card({pet}){
        }    
 
     return(
-        <div className="card" onClick={onClickHandler} >
+        <div className= {styles.card} onClick={onClickHandler} >
                 <img src= {pet.imageUrl} />
-                <div className="short-info-wrapper">
+                <div className={styles["short-info-wrapper"]}>
                     <h3>{pet.name}</h3>
                     <ul>
                         <li><i className="fa-solid fa-paw"></i><span className="pink bold">Breed:</span> {pet.breed}</li>

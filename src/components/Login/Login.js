@@ -1,23 +1,34 @@
 import { useForm } from "../../hooks/useForm";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
+import styles from "../../styles/LoginRegister.module.css";
+
 
 export default function Login() {
 
-    const { onLoginSubmit } = useAuth();
+    const { onLoginSubmit, message, styledValues } = useAuth();
 
     const { formValues, onChangeHandler, onSubmit } = useForm({}, onLoginSubmit);
 
     const data = formValues;
 
+    const outlineStyle = {
+        pink: {
+            outline: "none!important",
+            border: "3px solid #ea2879"
+        }
+    }
+
     return (
-        <div className="form-wrapper">
+
+        <div className={styles["form-wrapper"]} >
             <form method="POST" onSubmit={onSubmit}>
-                <fieldset className="field">
+                <fieldset className={styles.field}>
                     <legend>Do we know you?</legend>
                     <div>
                         <label htmlFor="userName">Username:</label><br />
                         <input
+                            style={styledValues.includes("userName") ? outlineStyle.pink : outlineStyle.unset} 
                             type="text"
                             id="userName"
                             name="userName"
@@ -27,6 +38,7 @@ export default function Login() {
                     <div>
                         <label htmlFor="email">Email:</label><br />
                         <input
+                            style={styledValues.includes("email") ? outlineStyle.pink : outlineStyle.unset}  
                             type="text"
                             id="email"
                             name="email"
@@ -36,17 +48,23 @@ export default function Login() {
                     <div>
                         <label htmlFor="password">Password:</label><br />
                         <input
+                            style={styledValues.includes("password") ? outlineStyle.pink : outlineStyle.unset}
                             type="password"
                             id="password"
                             name="password"
                             value={data.password || ''}
                             onChange={onChangeHandler} />
+
+                    </div>                   
+                    <div className={styles["bottom-div"]}>
+                        <p className={styles.message}>{message}</p>
+                        <button type="submit" className="submit-btn">Login</button>
+                        <Link to="/register">No, not really. But i want in!</Link>
                     </div>
-                    <button type="submit" className="submit-btn">Login</button>
-                    <Link to="/register">No, not really. But i want in!</Link>
                 </fieldset>
             </form>
             <img src="images/form-kitty.png" alt="cat-looking-sideways" />
         </div>
+
     )
 }

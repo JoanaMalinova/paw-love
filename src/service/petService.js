@@ -22,7 +22,7 @@ export function createStory(data) {
     requester.post(baseUrl + 'data/pets', data);
 }
 
-export function deleteStory(id) {
+export async function deleteStory(id) {
     requester.del(baseUrl + `data/pets/${id}`);
 }
 

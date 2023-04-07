@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import { useForm } from "../../hooks/useForm";
 import { useNavigate } from "react-router-dom";
+import styles from "../../styles/Create.module.css";
 
 export default function Edit({ setPets }) {
 
@@ -31,12 +32,12 @@ export default function Edit({ setPets }) {
     };
 
     return (
-        <div className="create-wrapper">
-            <img src="https://photosfine.files.wordpress.com/2012/04/hamster-white-background-4.jpg?w=1200" alt="hamster" className="hamster-img" />
+        <div className={styles["create-wrapper"]}>
+            <img src="https://photosfine.files.wordpress.com/2012/04/hamster-white-background-4.jpg?w=1200" alt="hamster" className={styles["hamster-img"]} />
             <form onSubmit={onSubmitHandler}>
-                <fieldset className="field create-field">
+                <fieldset className={`${styles.field} ${styles["create-field"]}`}>
                     <legend>Did you mean to change anything?</legend>
-                    <div className="left-container">
+                    <div className={styles["left-container"]}>
                         <div>
                             <label htmlFor="name">Pet Name:</label>
                             <input
@@ -64,7 +65,7 @@ export default function Edit({ setPets }) {
                                 value={formValues.breed || ""}
                                 onChange={onChangeHandler} />
                         </div>
-                        <div className="gender-wrapper">
+                        <div className={styles["gender-wrapper"]}>
                             <p>Gender:</p>
                             <label htmlFor="male">male</label>
                             <input
@@ -96,7 +97,7 @@ export default function Edit({ setPets }) {
                             />
                         </div>
                     </div>
-                    <div className="right-container">
+                    <div className={styles["right-container"]}>
                         <label htmlFor="petStory">Pet Story:</label>
                         <textarea
                             name="petStory"
