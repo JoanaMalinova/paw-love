@@ -22,13 +22,13 @@ async function requester(method, url, data) {
 
         if (res.status === 204) {
             return res;
-        }       
+        }
 
         if (res.ok === false) {
 
-            if (res.status === 403) {              
+            if (res.status === 403) {
                 const result = await res.json();
-                return result.message;               
+                return result.message;
             }
             if (res.status === 404) {
                 return
@@ -40,7 +40,7 @@ async function requester(method, url, data) {
         return result;
     }
     catch (err) {
-        console.log(err.message);
+       console.log(err.message);
     }
 }
 

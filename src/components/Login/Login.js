@@ -7,7 +7,6 @@ import styles from "../../styles/LoginRegister.module.css";
 export default function Login() {
 
     const { onLoginSubmit, message, styledValues } = useAuth();
-
     const { formValues, onChangeHandler, onSubmit } = useForm({}, onLoginSubmit);
 
     const data = formValues;

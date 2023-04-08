@@ -19,15 +19,15 @@ import { PetOwner } from "./components/special/PetOwner";
 import { AuthContext } from "./contexts/AuthContext";
 import { useAuth } from "./hooks/useAuth";
 
+
+
 function App() {
 
     const [pets, setPets] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-    // const [errorMessage, setErrorMessage] = useState("");
-
+    const [isLoading, setIsLoading] = useState(false);    
     const auth = useAuth();
 
-    return (
+    return (   
         <AuthContext.Provider value={auth}>
             <ErrorBoundary>
                 <div>

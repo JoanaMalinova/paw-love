@@ -10,6 +10,7 @@ import { Loading } from '../special/Loading';
 import { checkIfLiked, getLikeCount } from "../../service/likeService";
 import { useAuth } from '../../hooks/useAuth';
 
+
 export default function Details({ setPets, isLoading, setIsLoading }) {
 
     const [data, setData] = useState({});

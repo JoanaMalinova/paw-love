@@ -5,11 +5,12 @@ import styles from "../../styles/PetCave.module.css";
 import { AuthContext } from "../../contexts/AuthContext";
 import { Loading } from "../special/Loading";
 
+
 export default function MyCave({ isLoading, setIsLoading }) {
 
     const [myPets, setMyPets] = useState([]);
-
     const auth = useContext(AuthContext);
+    
     const userId = auth.userId;
 
     useEffect(() => {
@@ -26,7 +27,7 @@ export default function MyCave({ isLoading, setIsLoading }) {
     }, []);
 
     const cave = (<div className={styles["cave-wrapper"]}>
-        {myPets ? myPets.map(pet => <Card key={pet._id} pet={pet} />) : <p className={styles["no-story-yet"]}>No stories yet</p>}
+        {myPets.length ? myPets.map(pet => <Card key={pet._id} pet={pet} />) : <p className={styles["no-story-yet"]}>No stories yet</p>}
     </div>);
 
     return (

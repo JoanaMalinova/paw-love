@@ -5,27 +5,26 @@ import { createStory } from '../../service/petService';
 import styles from '../../styles/Create.module.css';
 
 
-export default function CreatePost({setPets}) {
+export default function CreatePost({ setPets }) {
 
     const { formValues, onChangeHandler } = useForm({});
+    const navigate = useNavigate();
 
-    const navigate = useNavigate();    
-
-    const data = formValues;   
+    const data = formValues;
 
     const submitHandler = (e) => {
         e.preventDefault();
 
-        createStory(data);
+        createStory(data)
 
         setPets(state => [...state, data]);
-        
+
         navigate("/pet-cave");
 
     }
 
     return (
-       
+
         <div className={styles["create-wrapper"]}>
             <img src="images/guinea pig-create.png" alt="guinea-pig" className={styles["quinea-pig-img"]} />
             <Description />

@@ -8,11 +8,9 @@ import styles from "../../styles/Create.module.css";
 export default function Edit({ setPets }) {
 
     const { petId } = useParams();
-
     const navigate = useNavigate();
-
     const { formValues, onChangeHandler, setFormValues } = useForm({});
-    
+
     useEffect(() => {
 
         getPet(petId).then(res => setFormValues(res));
@@ -20,12 +18,10 @@ export default function Edit({ setPets }) {
     }, [petId]);
 
     const onSubmitHandler = async (e) => {
-
         e.preventDefault();
 
         const result = await editStory(petId, formValues);
-
-        setPets(state => state.map(curr=> curr._id=== formValues._id ? result: curr));
+        setPets(state => state.map(curr => curr._id === formValues._id ? result : curr));
 
         navigate(`/pet-cave/${petId}`);
 

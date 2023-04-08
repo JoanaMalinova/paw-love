@@ -13,7 +13,7 @@ export default function LikesAndButtons({ id, ownerId, petName, setPets }) {
 
     const { userId } = useAuth();
 
-    const { comments, likes, liked, setLiked, isLoading } = useContext(CommentLikeContext);
+    const { comments, likes, liked, setLiked } = useContext(CommentLikeContext);
 
     const onDeleteClick = () => {
         const modal = document.getElementById("del-modal");

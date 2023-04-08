@@ -35,7 +35,7 @@ export function useAuth() {
             setMessage("All fileds are required!");
             return;
         }
-
+        
         const result = await login(data);
 
         if (result === "Login or password don't match") {

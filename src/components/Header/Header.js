@@ -4,16 +4,14 @@ import styles from "../../styles/Header.module.css";
 
 export default function Header() {
 
-    const { isAuthenticated, onLogout, userName } = useAuth();   
-
+    const { isAuthenticated, onLogout, userName } = useAuth();  
     const navigate = useNavigate();
-
     const location = useLocation();
+
     const path = location.pathname;
 
     const onLogoClickHandler = () => {
         navigate("/");
-
     }
 
     const linkColorStyle = {
