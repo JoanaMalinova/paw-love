@@ -52,7 +52,7 @@ export default function LikesAndButtons({ id, ownerId, petName, setPets }) {
         <div className={styles["like-div"]}>
             <div className={styles["likes-and-comments"]}>
                 {likes == 1 ? <p> {likes} <span className="pink">like <i className="fa-solid fa-heart"></i></span></p>
-                    : <p> {likes} <span className={`pink ${styles["comment-link"]}`}>likes <i className="fa-solid fa-heart"></i></span></p>}
+                    : <p> {likes} <span className={`pink ${styles["comment-link"]}`}>likes <i className="fa-solid fa-thumbs-up"></i></span></p>}
 
                 {comments.length === 1 ? <p> {comments.length} <Link to={`/pet-cave/${id}/comments`} ><span className="pink">comment </span><i className="fa-solid fa-comment"></i></Link></p> :
                     <p> {comments.length} <Link to={`/pet-cave/${id}/comments`} ><span className="pink">comments </span><i className="fa-solid fa-comment"></i></Link></p>}
@@ -65,8 +65,8 @@ export default function LikesAndButtons({ id, ownerId, petName, setPets }) {
                             <button className="submit-btn" onClick={onDeleteClick} >Delete</button>
                         </div>
                         : liked ? <div className={styles["bottom-div"]}><p className={styles["add-comment"]} onClick={onModalAppear}>Add a comment <i className="fa-solid fa-comment"></i></p></div> :
-                            <div className={styles["bottom-div"]}><button className="submit-btn like-btn" onClick={onLike}>Like <i className="fa-solid fa-heart"></i></button>
-                                <p className={styles["add-comment"]} onClick={onModalAppear}>Add a comment <i className="fa-solid fa-comment"></i></p></div>
+                            <div className={styles["bottom-div"]}><p className={styles["add-comment"]} onClick={onLike}><i class="fa-solid fa-thumbs-up fa-xl"></i></p>
+                                <p className={styles["add-comment"]} onClick={onModalAppear}><i className="fa-solid fa-comment fa-xl"></i></p></div>
                     }
                     <CommentModal id={id} />
                     <DeleteModal petName={petName} setPets={setPets} id={id} />

@@ -4,7 +4,7 @@ import styles from "../../styles/Home.module.css";
 
 export default function Home() {
 
-    const { isAuthenticated } = useAuth();   
+    const { user } = useAuth();
 
     return (
         <div className={styles.wrapper}>
@@ -13,7 +13,7 @@ export default function Home() {
                     We would <span className="pink">love</span> to know more about it!
                 </h1>
                 <h2 className="pink">A community to share and care</h2>
-                {!isAuthenticated && <h3><Link to="/register">join us now</Link></h3>}
+                {!user && <h3><Link to="/register">join us now</Link></h3>}
             </div>
             <div className={styles["img-holder"]}>
                 <img src="images/pngwing.com.png" alt="dog-cat-kissing" />
