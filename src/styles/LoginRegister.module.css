@@ -1,0 +1,54 @@
+.form-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding-top: 24px;
+}
+
+.form-wrapper form {
+    margin: 0px 0px 10% 32%;
+}
+
+.field {
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    border-radius: 30px;
+    padding: 26px;
+    background-color: #a6db67;
+    border: none;
+    color: white;
+    position: relative;
+}
+
+.form-wrapper .field {
+    width: 30vw;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-wrapper img {
+    width: 30vw;
+    height: auto;
+}
+
+.form-wrapper a {    
+    color: #ea2879;
+    font-size: 18px;
+    text-decoration: underline;
+    margin-top: 15px;
+}
+
+.bottom-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.message {
+    color: #ea2879;
+    font-size: 18px;
+    text-align: center; 
+}

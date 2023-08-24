@@ -9,18 +9,18 @@ export default function PetCave({ setPets, pets, isLoading, setIsLoading }) {
 
     useEffect(() => {
         setIsLoading(true);
-        getAll()
-            .then(result => {
-                setPets(result);
-                setIsLoading(false);
-            })
-            .catch(() => {                
-                setIsLoading(false);
-            })
+        // getAll()
+        //     .then(result => {
+        //         setPets(result);
+        //         setIsLoading(false);
+        //     })
+        //     .catch(() => {                
+        //         setIsLoading(false);
+        //     })
     }, []);
 
     const cave = (<div className={styles["cave-wrapper"]}>
-        {pets.length ? pets.map(pet => <Card key={pet._id} pet={pet} />) : <p className={styles["no-story-yet"]}>No stories yet</p>}
+        {(pets && pets.length) ? pets.map(pet => <Card key={pet._id} pet={pet} />) : <p className={styles["no-story-yet"]}>No stories yet</p>}
     </div>);
 
     return (

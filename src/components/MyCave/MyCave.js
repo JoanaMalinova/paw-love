@@ -27,7 +27,7 @@ export default function MyCave({ isLoading, setIsLoading }) {
     }, []);
 
     const cave = (<div className={styles["cave-wrapper"]}>
-        {myPets.length ? myPets.map(pet => <Card key={pet._id} pet={pet} />) : <p className={styles["no-story-yet"]}>No stories yet</p>}
+        {(myPets && myPets.length) ? myPets.map(pet => <Card key={pet._id} pet={pet} />) : <p className={styles["no-story-yet"]}>No stories yet</p>}
     </div>);
 
     return (

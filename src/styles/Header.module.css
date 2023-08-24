@@ -1,0 +1,32 @@
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 29px;
+    margin-right: auto;
+    margin-left: 220px;
+}
+
+.logo:hover {
+    cursor: pointer;
+}
+
+.logo p {
+    font-weight: 600;
+}
+
+.logo img {
+    height: 60px;
+}
+
+.user-greet {
+    font-size: 26px;
+    font-style: oblique;
+    font-weight: 300;
+    color: #ea2879;
+}
+
+.guest,
+.user {
+    display: flex;
+    gap: 40px;
+}

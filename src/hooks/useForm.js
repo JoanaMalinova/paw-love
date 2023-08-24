@@ -1,8 +1,13 @@
 import { useState } from "react";
+import { useFormValidation } from "./useFormValidation";
 
-export function useForm(initialValues, onSubmitHandler) {
+export function useForm(initialValues, onSubmitHandler, petId) {
 
     const [formValues, setFormValues] = useState(initialValues);
+    const [styledInputs, setStyledInputs] = useState([]);
+    const [message, setMessage] = useState("");
+    const validator = useFormValidation();
+
 
     const onChangeHandler = (e) => {
         const { name, value } = e.target;
@@ -11,8 +16,32 @@ export function useForm(initialValues, onSubmitHandler) {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        await onSubmitHandler(formValues);
+        const { error, styledValues } = validator(formValues);
+        setStyledInputs(styledValues);
+        setMessage(error);
+
+        if (!styledValues.length) {
+            const result = await onSubmitHandler(formValues, petId);
+            if (result === "Login or password don't match") {
+                setMessage(result);
+            }
+        }
     }
 
-    return { formValues, onChangeHandler, onSubmit, setFormValues  };
+    const outlineStyle = {
+        pink: {
+            outline: "none!important",
+            border: "3px solid #ea2879"
+        }
+    }
+
+    return {
+        formValues,
+        onChangeHandler,
+        onSubmit,
+        setFormValues,
+        styledInputs,
+        message,
+        outlineStyle
+    };
 }

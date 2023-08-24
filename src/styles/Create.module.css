@@ -1,0 +1,103 @@
+.create-wrapper {
+    width: 50vw;
+    height:76vh;
+    margin: auto;
+    position: relative;
+    
+}
+
+.field {
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    border-radius: 30px;
+    padding: 26px;
+    background-color: #a6db67;
+    border: none;
+    color: white;
+}
+
+.input-wrapper{
+    display: flex;
+    gap: 50px;
+}
+
+.field.create-field {
+    justify-content: center; 
+    flex-direction: column;      
+    padding: 24px 68px;
+
+}
+
+.field.create-field>div {
+    flex-basis: 40%;
+}
+
+.gender-wrapper {
+    display: flex;
+    gap: 5px;
+    justify-content: space-between;
+}
+
+.descr-wrapper {
+    background-color: #ea2879;
+    padding: 16px;
+    border-radius: 30px;
+}
+
+.descr-wrapper h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 28px;
+}
+
+.descr-wrapper hr {
+    width: 10vw;
+    margin: auto;
+    border: 1px solid white;
+}
+
+.descr-wrapper p {
+    font-weight: 500;
+    padding: 0 50px;
+    line-height: 2;
+    color: white;
+}
+
+.create-wrapper img {
+    position: absolute;
+    width: 20vw;
+}
+
+.left-container{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.create-wrapper .bunny-img {
+    bottom: -30px;
+    right: -350px;
+}
+
+.create-wrapper .quinea-pig-img {
+    left: -350px;
+    bottom: -30px;
+}
+
+.create-wrapper .hamster-img {
+    right: -300px;
+    bottom: -30px;
+    width: 16vw;
+}
+
+.create-wrapper .chameleon-img {
+    left: -370px
+}
+
+.message {
+    color: #ea2879;
+    font-size: 18px;
+    text-align: center;
+}

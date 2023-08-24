@@ -1,0 +1,138 @@
+.details-wrapper {
+    background-color: #a6db67;
+    padding: 30px;
+    width: 70vw;
+    margin: auto;
+    border-radius: 30px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+}
+
+.profile-pic {
+    flex-basis: 50%;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    max-height: 70vh;
+    max-width: 70vw;
+    overflow: hidden;
+    outline: 10px solid #ea2879;
+}
+
+.profile-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.details-info-wrapper {
+    flex-basis: 50%;
+    color: white;
+}
+
+.details-wrapper ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+.details-wrapper h1 {
+    margin-bottom: 10px;
+    text-align: center;
+    color: #ea2879;
+}
+
+.details-story {
+    max-height: 200px;
+    overflow: hidden;
+}
+
+.details-story:hover {
+    overflow-y: scroll;
+}
+
+
+.like-div {
+    text-align: center;
+    font-weight: 800;
+    margin-top: 10px;
+}
+
+.likes-and-comments {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.button-div,
+.edit-del-btn-wrapper {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.button-div {
+    font-size: 28px;
+}
+
+.bottom-div {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.bottom-div .add-comment {
+
+    color: #ea2879;
+
+}
+
+.bottom-div .add-comment:hover {
+    cursor: pointer;
+}
+
+.bottom-div .add-comment:hover {
+    color: white;
+}
+
+/* -------------------COMMENTS -----------------*/
+
+
+.comments-div {
+    height: 80%;
+    display: flex;
+    align-items: center;
+}
+
+.comments-div .no-comments {
+    text-transform: uppercase;
+    font-size: 26px;
+    font-weight: 600;
+    margin: auto;
+}
+
+.details-wrapper ul.comment-holder {
+    align-items: flex-start;
+    height: 100%;
+    padding: 4% 10%;
+    gap: 16px;
+}
+
+.comment-box {
+    color: #ea2879;
+    padding: 8px 12px;
+    background-color: white;
+    border-radius: 70px;
+    font-size: 20px;
+}
+
+.comment-box p {
+    padding: 8px 18px;
+    text-align: justify;
+}
+
+

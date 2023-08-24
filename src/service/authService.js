@@ -1,21 +1,61 @@
-import * as requester from "./api/rest.js";
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signOut,
+    updateProfile
+} from "firebase/auth";
+import { getFirestore, collection, doc, setDoc } from "firebase/firestore";
+import { firebaseApp } from "../firebase_setup/firebase";
 
-const endpoits = {
-    login: 'http://localhost:3030/users/login',
-    register: 'http://localhost:3030/users/register',
-    logout: 'http://localhost:3030/users/logout'
-}
+const db = getFirestore(firebaseApp);
+const auth = getAuth(firebaseApp);
 
-export async function login(data) {
-    return requester.post(endpoits.login, data);
-}
 
-export async function register(data) {
-    return requester.post(endpoits.register, data);
-}
+export const signUp = async (username, email, password) => {
+    try {
+        const userCredential = await createUserWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
+        const user = userCredential.user;
 
-export async function logout() {
-    requester.get(endpoits.logout);
-}
+        await updateProfile(user, { displayName: username });
 
+        const userRef = doc(collection(db, "users"));
+        await setDoc(userRef, {
+            userId: userRef.id,
+            email,
+            username
+        });
+
+        return user;
+    } catch (error) {
+        return { error: error.message }
+    }
+};
+
+export const signIn = async (email, password) => {
+    try {
+        const userCredential = await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
+        const user = userCredential.user;
+        return user;
+    } catch (error) {
+        return { error: error.message }
+    }
+};
+
+export const signOutUser = async () => {
+    try {
+        await signOut(auth);
+        return true
+    } catch (error) {
+        return { error: error.message }
+    }
+};
 

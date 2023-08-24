@@ -1,22 +1,20 @@
 import { useForm } from "../../hooks/useForm";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../hooks/useAuth";
+import { useSubmit } from "../../hooks/useSubmit";
 import styles from "../../styles/LoginRegister.module.css";
 
 
 export default function Register() {
 
-    const { onRegisterSubmit, message, styledValues } = useAuth();
-    const { formValues, onChangeHandler, onSubmit } = useForm({}, onRegisterSubmit);
+    const { onRegisterSubmit } = useSubmit();
+    const { formValues, onChangeHandler, onSubmit, outlineStyle, styledInputs, message } = useForm({
+        username: "",
+        email: "",
+        password: "",
+        rePass: ""
+    }, onRegisterSubmit);
 
     const data = formValues;
-
-    const outlineStyle = {
-        pink: {
-            outline: "none!important",
-            border: "3px solid #ea2879"
-        }
-    }
 
     return (
         <div className={styles["form-wrapper"]}>
@@ -24,43 +22,43 @@ export default function Register() {
                 <fieldset className={styles.field}>
                     <legend>Join our community</legend>
                     <div>
-                        <label htmlFor="userName">Username:</label><br />
+                        <label htmlFor="username">Username:</label><br />
                         <input
-                            style={styledValues.includes("userName") ? outlineStyle.pink : outlineStyle.unset}
+                            style={styledInputs.includes("username") ? outlineStyle.pink : outlineStyle.unset}
                             type="text"
-                            id="userName"
-                            name="userName"
-                            value={data.userName || ''}
+                            id="username"
+                            name="username"
+                            value={data.username}
                             onChange={onChangeHandler} />
                     </div>
                     <div >
                         <label htmlFor="email">Email:</label><br />
                         <input
-                            style={styledValues.includes("email") ? outlineStyle.pink : outlineStyle.unset}
+                            style={styledInputs.includes("email") ? outlineStyle.pink : outlineStyle.unset}
                             type="text"
                             id="email"
                             name="email"
-                            value={data.email || ''}
+                            value={data.email}
                             onChange={onChangeHandler} />
                     </div>
                     <div>
                         <label htmlFor="password">Password:</label><br />
                         <input
-                            style={styledValues.includes("password") ? outlineStyle.pink : outlineStyle.unset}
+                            style={styledInputs.includes("password") ? outlineStyle.pink : outlineStyle.unset}
                             type="password"
                             id="password"
                             name="password"
-                            value={data.password || ''}
+                            value={data.password}
                             onChange={onChangeHandler} />
                     </div>
                     <div>
                         <label htmlFor="rePass">Confirm password:</label><br />
                         <input
-                            style={styledValues.includes("rePass") ? outlineStyle.pink : outlineStyle.unset}
+                            style={styledInputs.includes("rePass") ? outlineStyle.pink : outlineStyle.unset}
                             type="password"
                             id="rePass"
                             name="rePass"
-                            value={data.rePass || ''}
+                            value={data.rePass}
                             onChange={onChangeHandler} />
 
                     </div>
