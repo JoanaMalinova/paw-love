@@ -1,4 +1,4 @@
-import { collection, doc, setDoc, getFirestore, getDocs, getDoc } from "firebase/firestore";
+import { collection, doc, setDoc, getFirestore, getDocs, getDoc, query, where } from "firebase/firestore";
 import { firebaseApp } from "../firebase_setup/firebase";
 
 
@@ -23,8 +23,13 @@ export async function getAll() {
     return result;
 }
 
-export function getMy(userId) {
-    // return requester.get(baseUrl + `data/pets?where=_ownerId%3D%22${userId}%22&sortBy=_createdOn%20desc`);
+export async function getMy(userId) {
+    const result = [];
+    const q = query(collection(db, "pets"), where("ownerId", "==", userId));
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((currQS) => result.push(currQS.data()));
+    return result;
 }
 
 export async function editStory(id, data) {

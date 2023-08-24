@@ -1,22 +1,20 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getMy } from "../../service/petService";
 import Card from "../PetCave/Card";
 import styles from "../../styles/PetCave.module.css";
-import { AuthContext } from "../../contexts/AuthContext";
 import { Loading } from "../special/Loading";
+import { useAuth } from "../../hooks/useAuth";
 
 
 export default function MyCave({ isLoading, setIsLoading }) {
 
     const [myPets, setMyPets] = useState([]);
-    const auth = useContext(AuthContext);
-    
-    const userId = auth.userId;
+    const { user } = useAuth();
 
     useEffect(() => {
-        
-        setIsLoading(true);       
-        getMy(userId)
+
+        setIsLoading(true);
+        getMy(user?.uid)
             .then(result => {
                 setMyPets(result);
                 setIsLoading(false);
@@ -24,7 +22,8 @@ export default function MyCave({ isLoading, setIsLoading }) {
             .catch(() => {
                 setIsLoading(false);
             })
-    }, []);
+
+    }, [user]);
 
     const cave = (<div className={styles["cave-wrapper"]}>
         {(myPets && myPets.length) ? myPets.map(pet => <Card key={pet._id} pet={pet} />) : <p className={styles["no-story-yet"]}>No stories yet</p>}
