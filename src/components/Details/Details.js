@@ -20,28 +20,37 @@ export default function Details({ setPets, isLoading, setIsLoading }) {
 
     const { petId } = useParams();
 
-    const { userId } = useAuth();
+    const { user } = useAuth();
 
     const location = useLocation();
 
     useEffect(() => {
         setIsLoading(true);
-        const petPomise = getPet(petId);
-        const commentPromise = getComments(petId);
-        const checkLikesPomise = checkIfLiked(petId, userId);
-        const getLikesPromise = getLikeCount(petId);
-        Promise.all([petPomise, commentPromise, checkLikesPomise, getLikesPromise])
+        const petPromise = getPet(petId);
+        // const commentPromise = getComments(petId);
+        // const checkLikesPomise = checkIfLiked(petId, userId);
+        // const getLikesPromise = getLikeCount(petId);
+        Promise.all([
+            petPromise,
+            // commentPromise,
+            // checkLikesPomise,
+            // getLikesPromise
+        ])
             .then((res => {
                 setData(res[0]);
-                setComments(res[1]);
-                setLiked(res[2]);
-                setLikes(res[3]);
-                setIsLoading(false);               
+                // setComments(res[1]);
+                // setLiked(res[2]);
+                // setLikes(res[3]);
+                setIsLoading(false);
             }))
             .catch(() => {
                 setIsLoading(false);
             });
-    }, [petId, likes, liked])
+    }, [
+        petId,
+        // likes,
+        // liked
+    ])
 
     const context = {
         comments,

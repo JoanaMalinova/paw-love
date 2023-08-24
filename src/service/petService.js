@@ -1,12 +1,19 @@
-import { collection, doc, setDoc, getFirestore, getDocs } from "firebase/firestore";
+import { collection, doc, setDoc, getFirestore, getDocs, getDoc } from "firebase/firestore";
 import { firebaseApp } from "../firebase_setup/firebase";
 
 
 const db = getFirestore(firebaseApp);
 
 
-export function getPet(id) {
-    // return requester.get(baseUrl + `data/pets/${id}`);
+export async function getPet(id) {
+    const docRef = doc(db, "pets", id);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+        return docSnap.data();
+    } else {
+        console.log("No such document!");
+    }
 }
 
 export async function getAll() {
