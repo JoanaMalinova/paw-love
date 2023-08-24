@@ -1,4 +1,4 @@
-import { collection, doc, setDoc, getFirestore, getDocs, getDoc, query, where } from "firebase/firestore";
+import { collection, doc, setDoc, getFirestore, getDocs, getDoc, query, where, Timestamp, orderBy } from "firebase/firestore";
 import { firebaseApp } from "../firebase_setup/firebase";
 
 
@@ -18,7 +18,9 @@ export async function getPet(id) {
 
 export async function getAll() {
     const result = [];
-    const snapshots = await getDocs(collection(db, "pets"))
+    const q = query(collection(db, "pets"), orderBy("created"));
+
+    const snapshots = await getDocs(q);
     snapshots.forEach((currQS) => result.push(currQS.data()));
     return result;
 }
@@ -48,7 +50,8 @@ export async function createStory(data, ownerId) {
         petStory: data.petStory,
         gender: data.gender,
         imageUrl: data.imageUrl,
-        breed: data.breed
+        breed: data.breed,
+        created: Timestamp.now()
     });
 }
 
