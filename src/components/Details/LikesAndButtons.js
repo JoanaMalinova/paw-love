@@ -11,7 +11,7 @@ export default function LikesAndButtons({ id, ownerId, petName, setPets }) {
 
     const navigate = useNavigate();
 
-    const { userId } = useAuth();
+    const { user } = useAuth();
 
     const { comments, likes, liked, setLiked } = useContext(CommentLikeContext);
 
@@ -57,9 +57,9 @@ export default function LikesAndButtons({ id, ownerId, petName, setPets }) {
                 {comments.length === 1 ? <p> {comments.length} <Link to={`/pet-cave/${id}/comments`} ><span className="pink">comment </span><i className="fa-solid fa-comment"></i></Link></p> :
                     <p> {comments.length} <Link to={`/pet-cave/${id}/comments`} ><span className="pink">comments </span><i className="fa-solid fa-comment"></i></Link></p>}
             </div>
-            {userId &&
+            {user &&
                 <div className={styles["button-div"]}>
-                    {ownerId == userId ?
+                    {ownerId == user?.uid ?
                         <div className={styles["edit-del-btn-wrapper"]}>
                             <button className="submit-btn" onClick={navigateToEdit}>Edit</button>
                             <button className="submit-btn" onClick={onDeleteClick} >Delete</button>
