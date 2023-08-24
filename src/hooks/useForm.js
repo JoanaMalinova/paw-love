@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useFormValidation } from "./useFormValidation";
 
-export function useForm(initialValues, onSubmitHandler, petId) {
+export function useForm(initialValues, onSubmitHandler, userId, petId) {
 
     const [formValues, setFormValues] = useState(initialValues);
     const [styledInputs, setStyledInputs] = useState([]);
@@ -21,7 +21,7 @@ export function useForm(initialValues, onSubmitHandler, petId) {
         setMessage(error);
 
         if (!styledValues.length) {
-            const result = await onSubmitHandler(formValues, petId);
+            const result = await onSubmitHandler(formValues, userId, petId);
             if (result === "Login or password don't match") {
                 setMessage(result);
             }

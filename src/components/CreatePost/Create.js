@@ -1,8 +1,11 @@
 import { useForm } from '../../hooks/useForm';
 import Description from './Description';
 import styles from '../../styles/Create.module.css';
+import { useAuth } from '../../hooks/useAuth';
 
 export default function CreatePost({ submitHandler }) {
+
+    const { user } = useAuth();
 
     const { formValues, onChangeHandler, styledInputs, onSubmit, outlineStyle, message } = useForm({
         name: "",
@@ -11,9 +14,9 @@ export default function CreatePost({ submitHandler }) {
         gender: "",
         age: "",
         petStory: ""
-    }, submitHandler);
+    }, submitHandler, user?.uid);
 
-    const data = formValues; 
+    const data = formValues;
 
     return (
 
@@ -97,9 +100,9 @@ export default function CreatePost({ submitHandler }) {
                                 value={data.petStory}
                                 onChange={onChangeHandler} >
                             </textarea>
-                        </div>                        
-                    </div>  
-                    <p className={styles.message}>{message}</p>              
+                        </div>
+                    </div>
+                    <p className={styles.message}>{message}</p>
                     <button type="submit" className="submit-btn">Create Story</button>
                 </fieldset>
             </form>

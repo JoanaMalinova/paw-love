@@ -26,12 +26,11 @@ function App() {
 
     const [pets, setPets] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const user = useAuth();
+    const { user } = useAuth();
     const navigate = useNavigate();
 
-    const submitHandler = (data) => {
-
-        createStory(data);
+    const submitHandler = async (data, userId) => {
+        await createStory(data, userId);
         setPets(state => [...state, data]);
         navigate("/pet-cave");
 

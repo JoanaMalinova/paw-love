@@ -9,14 +9,15 @@ export default function PetCave({ setPets, pets, isLoading, setIsLoading }) {
 
     useEffect(() => {
         setIsLoading(true);
-        // getAll()
-        //     .then(result => {
-        //         setPets(result);
-        //         setIsLoading(false);
-        //     })
-        //     .catch(() => {                
-        //         setIsLoading(false);
-        //     })
+        getAll()
+            .then((result) => {
+                setPets(result);
+                setIsLoading(false);
+            })
+            .catch((error) => {
+                console.log(error.message);
+                setIsLoading(false);
+            })
     }, []);
 
     const cave = (<div className={styles["cave-wrapper"]}>

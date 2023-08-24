@@ -30,6 +30,8 @@ export const signUp = async (username, email, password) => {
             username
         });
 
+        localStorage.setItem('user', JSON.stringify(user));
+
         return user;
     } catch (error) {
         return { error: error.message }
@@ -44,6 +46,9 @@ export const signIn = async (email, password) => {
             password
         );
         const user = userCredential.user;
+
+        localStorage.setItem('user', JSON.stringify(user));
+
         return user;
     } catch (error) {
         return { error: error.message }
@@ -53,6 +58,9 @@ export const signIn = async (email, password) => {
 export const signOutUser = async () => {
     try {
         await signOut(auth);
+
+        localStorage.clear();
+
         return true
     } catch (error) {
         return { error: error.message }
