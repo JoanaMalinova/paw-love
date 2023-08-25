@@ -4,11 +4,11 @@ import { CommentLikeContext } from "../../contexts/CommentLikeContext";
 import { useForm } from "../../hooks/useForm";
 import { postComment } from "../../service/commentService";
 
-export function CommentModal({ id }) {
+export function CommentModal({ id, userId, username }) {
 
     const { formValues, onChangeHandler } = useForm({});
     const { setComments } = useContext(CommentLikeContext);
-    const navigate = useNavigate();   
+    const navigate = useNavigate();
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
@@ -19,7 +19,7 @@ export function CommentModal({ id }) {
 
         setComments(state => [...state, comment]);
 
-        postComment({ petId, comment });
+        postComment({ petId, comment, userId, username });
 
         navigate(`/pet-cave/${id}/comments`);
     }

@@ -7,7 +7,7 @@ import { CommentModal } from "./CommentModal";
 import styles from '../../styles/Details.module.css';
 import { DeleteModal } from "./DeleteModal";
 
-export default function LikesAndButtons({ id, ownerId, petName, setPets }) {
+export default function LikesAndButtons({ id, ownerId, petName, setPets, userId, username }) {
 
     const navigate = useNavigate();
 
@@ -65,10 +65,10 @@ export default function LikesAndButtons({ id, ownerId, petName, setPets }) {
                             <button className="submit-btn" onClick={onDeleteClick} >Delete</button>
                         </div>
                         : liked ? <div className={styles["bottom-div"]}><p className={styles["add-comment"]} onClick={onModalAppear}>Add a comment <i className="fa-solid fa-comment"></i></p></div> :
-                            <div className={styles["bottom-div"]}><p className={styles["add-comment"]} onClick={onLike}><i class="fa-solid fa-thumbs-up fa-xl"></i></p>
+                            <div className={styles["bottom-div"]}><p className={styles["add-comment"]} onClick={onLike}><i className="fa-solid fa-thumbs-up fa-xl"></i></p>
                                 <p className={styles["add-comment"]} onClick={onModalAppear}><i className="fa-solid fa-comment fa-xl"></i></p></div>
                     }
-                    <CommentModal id={id} />
+                    <CommentModal id={id} userId={userId} username={username} />
                     <DeleteModal petName={petName} setPets={setPets} id={id} />
                 </div>}
         </div>

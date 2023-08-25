@@ -1,15 +1,21 @@
-// import * as requester from "./api/rest.js";
-
-const endpoints = {
-    // getComments: (petId) => `http://localhost:3030/data/comments?where=petId%3D%22${petId}%22`,
-    // postComment: 'http://localhost:3030/data/comments'
-}
+import { doc, getFirestore, updateDoc, arrayUnion, Timestamp } from "firebase/firestore";
+import { firebaseApp } from "../firebase_setup/firebase";
 
 
-export function getComments(petId) {
-    // return requester.get(endpoints.getComments(petId));
-}
+const db = getFirestore(firebaseApp);
 
-export function postComment(data) {
-    // requester.post(endpoints.postComment, data);
+
+export async function postComment(data) {
+
+    const commentPetRef = doc(db, "pets", data.petId);
+
+    await updateDoc(commentPetRef, {
+        comments: arrayUnion({
+            comment: data.comment,
+            username: data.username,
+            created: Timestamp.now()
+        })
+    });
+
+
 }

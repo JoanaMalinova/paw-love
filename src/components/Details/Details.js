@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import { getPet } from '../../service/petService';
-import { getComments } from "../../service/commentService";
 import { PetProfile } from './PetProfile';
 import { Comments } from './Comments';
 import { CommentLikeContext } from '../../contexts/CommentLikeContext';
 import styles from '../../styles/Details.module.css';
 import { Loading } from '../special/Loading';
-import { checkIfLiked, getLikeCount } from "../../service/likeService";
 import { useAuth } from '../../hooks/useAuth';
 
 
@@ -26,39 +24,22 @@ export default function Details({ setPets, isLoading, setIsLoading }) {
 
     useEffect(() => {
         setIsLoading(true);
-        const petPromise = getPet(petId);
-        // const commentPromise = getComments(petId);
-        // const checkLikesPomise = checkIfLiked(petId, userId);
-        // const getLikesPromise = getLikeCount(petId);
-        Promise.all([
-            petPromise,
-            // commentPromise,
-            // checkLikesPomise,
-            // getLikesPromise
-        ])
+        getPet(petId)
             .then((res => {
-                setData(res[0]);
-                // setComments(res[1]);
-                // setLiked(res[2]);
-                // setLikes(res[3]);
+                setData(res);
+                console.log(res.comments);
+                setComments(res.comments);
                 setIsLoading(false);
             }))
-            .catch(() => {
+            .catch((err) => {
                 setIsLoading(false);
+                console.log(err.message);
             });
-    }, [
-        petId,
-        // likes,
-        // liked
-    ])
+    }, [petId])
 
     const context = {
         comments,
         setComments,
-        likes,
-        liked,
-        setLiked,
-        isLoading
     }
 
     const detailsCard = (<div className={styles["details-wrapper"]}>
@@ -66,7 +47,7 @@ export default function Details({ setPets, isLoading, setIsLoading }) {
             <img src={data.imageUrl} />
         </div>
         {location.pathname == `/pet-cave/${petId}` ?
-            <PetProfile data={data} petId={petId} setPets={setPets} /> :
+            <PetProfile data={data} petId={petId} setPets={setPets} userId={user?.uid} username={user?.displayName} /> :
             <Comments data={data} />
         }
     </div>)

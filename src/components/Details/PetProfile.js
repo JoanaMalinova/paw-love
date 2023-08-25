@@ -1,7 +1,7 @@
 import LikesAndButtons from './LikesAndButtons';
 import styles from '../../styles/Details.module.css';
 
-export function PetProfile({ data, petId, setPets }) {
+export function PetProfile({ data, petId, setPets, userId, username }) {
 
     return (<div className={styles["details-info-wrapper"]}>
         <ul>
@@ -15,6 +15,13 @@ export function PetProfile({ data, petId, setPets }) {
                 <p className={styles["details-story"]}><span className="pink bold">Story:</span> {data.petStory}</p>
             </li>
         </ul>
-        <LikesAndButtons id={petId} ownerId={data.ownerId} petName={data.name} setPets={setPets} />
+        <LikesAndButtons
+            id={petId}
+            ownerId={data.ownerId}
+            petName={data.name}
+            setPets={setPets}
+            userId={userId}
+            username={username}
+        />
     </div>)
 }
