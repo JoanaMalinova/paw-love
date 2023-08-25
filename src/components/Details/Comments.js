@@ -11,7 +11,7 @@ export function Comments({ data }) {
         <div className={styles["details-info-wrapper"]}>
             <h1>{data.name}</h1>
             <div className={styles["comments-div"]}>
-                {comments.length ?
+                {comments?.length ?
                     <ul className={styles["comment-holder"]}>
                         {comments.map((curr) => <Comment key={curr._id} comment={curr.comment} />)}
                     </ul>
