@@ -1,17 +1,16 @@
+import { doc, getFirestore } from "firebase/firestore";
+import { firebaseApp } from "../firebase_setup/firebase";
+const db = getFirestore(firebaseApp);
 
-const endpoints = {
+export async function checkIfLiked(data) {
 
 }
-
 
 export async function likePet(data) {
+    const petRef = doc(db, "pets", data.petId);
+
+    await updateDoc(petRef, {
+        like: increment(1)
+    });
 }
 
-
-export async function getLikeCount(petId) {
-}
-
-
-export async function checkIfLiked(petId, userId) {
-
-}

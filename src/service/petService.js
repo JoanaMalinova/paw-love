@@ -51,7 +51,8 @@ export async function createStory(data, ownerId) {
         gender: data.gender,
         imageUrl: data.imageUrl,
         breed: data.breed,
-        created: Timestamp.now()
+        created: Timestamp.now(),
+        likes: 0
     });
 }
 

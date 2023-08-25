@@ -29,6 +29,7 @@ export default function Details({ setPets, isLoading, setIsLoading }) {
                 setData(res);
                 console.log(res.comments);
                 setComments(res.comments);
+                setLikes(res.likes);
                 setIsLoading(false);
             }))
             .catch((err) => {
@@ -40,6 +41,8 @@ export default function Details({ setPets, isLoading, setIsLoading }) {
     const context = {
         comments,
         setComments,
+        likes,
+        setLikes
     }
 
     const detailsCard = (<div className={styles["details-wrapper"]}>
