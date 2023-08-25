@@ -1,6 +1,7 @@
 .footer {
-    position: fixed;
-    bottom: 0px;
+    position: absolute;
+    bottom: 0;
+    padding-top: 1rem;
     background-color: #ea2879;
     height: 9vh;
     width: 100vw;
@@ -10,4 +11,8 @@
     color: white;
     font-size: 18px;
     cursor: default;
+}
+
+footer p {
+    margin: 0;
 }

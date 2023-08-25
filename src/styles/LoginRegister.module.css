@@ -19,7 +19,7 @@
     background-color: #a6db67;
     border: none;
     color: white;
-    position: relative;
+    /* position: relative; */
 }
 
 .form-wrapper .field {
@@ -33,14 +33,14 @@
     height: auto;
 }
 
-.form-wrapper a {    
+.form-wrapper a {
     color: #ea2879;
     font-size: 18px;
     text-decoration: underline;
     margin-top: 15px;
 }
 
-.bottom-div{
+.bottom-div {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -50,5 +50,5 @@
 .message {
     color: #ea2879;
     font-size: 18px;
-    text-align: center; 
+    text-align: center;
 }

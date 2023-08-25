@@ -2,6 +2,13 @@
 
 html {
     font-family: "Poppins", sans-serif;
+    position: relative;
+    height: 100%;
+}
+
+main {
+    height: fit-content;
+    padding-bottom: 50px;
 
 }
 
@@ -12,6 +19,7 @@ html {
 .bold {
     font-weight: 500;
     text-transform: uppercase;
+
 }
 
 .fa-paw {
@@ -86,6 +94,10 @@ header {
     padding: 20px;
     font-size: 22px;
     font-weight: 500;
+    position: sticky;
+    top: 0px;
+    background-color: white;
+    z-index: 5;
 }
 
 header nav {
@@ -179,7 +191,7 @@ header nav li a:hover {
     cursor: pointer;
 }
 
-.del-cancel-div{
+.del-cancel-div {
     display: flex;
     gap: 20px;
     justify-content: center;
@@ -195,10 +207,3 @@ header nav li a:hover {
     font-weight: 600;
     margin: 35vh auto;
 }
-
-
-
-
-
-
-

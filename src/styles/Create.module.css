@@ -1,9 +1,8 @@
 .create-wrapper {
     width: 50vw;
-    height:76vh;
-    margin: auto;
-    position: relative;
-    
+    height: 76vh;
+    margin: 50px auto 100px auto;
+
 }
 
 .field {
@@ -17,14 +16,14 @@
     color: white;
 }
 
-.input-wrapper{
+.input-wrapper {
     display: flex;
     gap: 50px;
 }
 
 .field.create-field {
-    justify-content: center; 
-    flex-direction: column;      
+    justify-content: center;
+    flex-direction: column;
     padding: 24px 68px;
 
 }
@@ -70,7 +69,7 @@
     width: 20vw;
 }
 
-.left-container{
+.left-container {
     display: flex;
     flex-direction: column;
     gap: 3px;

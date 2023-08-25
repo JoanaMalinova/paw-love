@@ -1,15 +1,15 @@
 .main-wrapper {
-    height: 100vh;
     width: 100vw;
+    min-height: 100vh;
 }
 
 .cave-wrapper {
     display: grid;
-    position: relative;
     margin: auto;
     max-width: 70vw;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 20px;
+    padding-top: 30px;
 }
 
 .card {
