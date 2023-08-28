@@ -27,7 +27,6 @@ export default function Details({ setPets, isLoading, setIsLoading }) {
         getPet(petId)
             .then((res => {
                 setData(res);
-                console.log(res.comments);
                 setComments(res.comments);
                 setLikes(res.likes);
                 setIsLoading(false);

@@ -20,7 +20,7 @@ export function useFormValidation() {
         }
 
         for (const key in data) {
-            if (!data[key]) {
+            if (!data[key] && data[key] !== 0) {
                 inputIsEmpty = true;
                 styledValues.push(key);
             }

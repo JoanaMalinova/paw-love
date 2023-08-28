@@ -36,10 +36,31 @@ function App() {
 
     };
 
-    const onSubmitHandler = async (formValues, petId) => {
+    const onSubmitHandler = async (data, petId) => {
 
-        const result = await editStory(petId, formValues);
-        setPets(state => state.map(curr => curr._id === formValues._id ? result : curr));
+        const formValues = data;
+        delete formValues.created;
+        delete formValues.comments;
+
+        const currPet = pets.find(pet => pet.petId === petId);
+
+        const currPetvalues = Object.values(currPet);
+
+        const valueArr = Object.values(formValues).filter(curr => !currPetvalues.includes(curr));
+
+        if (valueArr.length) {
+            const values = {};
+
+            valueArr.forEach((value) => {
+                const key = Object.keys(formValues).find(key => formValues[key] === value);
+                values[key] = value;
+            });
+
+            await editStory(petId, values);
+
+            setPets(state => state.map(curr => curr.petId === formValues.petId ? data : curr));
+
+        }
 
         navigate(`/pet-cave/${petId}`);
     };

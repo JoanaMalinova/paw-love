@@ -1,4 +1,4 @@
-import { doc, getFirestore } from "firebase/firestore";
+import { doc, getFirestore, updateDoc, increment } from "firebase/firestore";
 import { firebaseApp } from "../firebase_setup/firebase";
 const db = getFirestore(firebaseApp);
 
@@ -12,5 +12,9 @@ export async function likePet(data) {
     await updateDoc(petRef, {
         like: increment(1)
     });
+
+    const userLikeRef = doc(db, "users", data.userID);
+
+
 }
 
