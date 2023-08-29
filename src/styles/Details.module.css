@@ -1,3 +1,9 @@
+.outer-wrapper {
+    width: auto;
+    min-height: 80vh;
+    padding: 2vh 0 10vh 0;
+}
+
 .details-wrapper {
     background-color: #a6db67;
     padding: 30px;

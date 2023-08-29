@@ -44,15 +44,19 @@ export default function Details({ setPets, isLoading, setIsLoading }) {
         setLikes
     }
 
-    const detailsCard = (<div className={styles["details-wrapper"]}>
-        <div className={styles["profile-pic"]}>
-            <img src={data.imageUrl} />
+    const detailsCard = (
+        <div className={styles["outer-wrapper"]}>
+            <div className={styles["details-wrapper"]}>
+                <div className={styles["profile-pic"]}>
+                    <img src={data.imageUrl} />
+                </div>
+                {location.pathname == `/pet-cave/${petId}` ?
+                    <PetProfile data={data} petId={petId} setPets={setPets} userId={user?.uid} username={user?.displayName} /> :
+                    <Comments data={data} />
+                }
+            </div>
         </div>
-        {location.pathname == `/pet-cave/${petId}` ?
-            <PetProfile data={data} petId={petId} setPets={setPets} userId={user?.uid} username={user?.displayName} /> :
-            <Comments data={data} />
-        }
-    </div>)
+    )
 
     return (
         <CommentLikeContext.Provider value={context}>
