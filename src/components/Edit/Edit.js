@@ -26,12 +26,12 @@ export default function Edit({ onSubmitHandler }) {
     return (
         <div className={styles["create-wrapper"]}>
             <img src="https://photosfine.files.wordpress.com/2012/04/hamster-white-background-4.jpg?w=1200" alt="hamster" className={styles["hamster-img"]} />
-            <form onSubmit={onSubmit}>
-                <fieldset className={`${styles.field} ${styles["create-field"]}`}>
+            <form onSubmit={onSubmit} >
+                <fieldset className={styles.field}>
                     <legend>Did you mean to change anything?</legend>
-                    <div className={styles["input-wrapper"]}>
+                    <div className={styles["create-field"]}>
                         <div className={styles["left-container"]}>
-                            <div>
+                            <div className={styles["inner-div"]}>
                                 <label htmlFor="name">Pet Name:</label>
                                 <input
                                     style={styledInputs.includes("name") ? outlineStyle.pink : outlineStyle.unset}
@@ -41,7 +41,7 @@ export default function Edit({ onSubmitHandler }) {
                                     value={formValues.name}
                                     onChange={onChangeHandler} />
                             </div>
-                            <div>
+                            <div className={styles["inner-div"]}>
                                 <label htmlFor="imageUrl">Picture:</label>
                                 <input
                                     style={styledInputs.includes("name") ? outlineStyle.pink : outlineStyle.unset}
@@ -51,7 +51,7 @@ export default function Edit({ onSubmitHandler }) {
                                     value={formValues.imageUrl}
                                     onChange={onChangeHandler} />
                             </div>
-                            <div>
+                            <div className={styles["inner-div"]}>
                                 <label htmlFor="breed">Breed:</label>
                                 <input
                                     style={styledInputs.includes("name") ? outlineStyle.pink : outlineStyle.unset}
@@ -83,7 +83,7 @@ export default function Edit({ onSubmitHandler }) {
                                     onChange={onChangeHandler}
                                 />
                             </div>
-                            <div>
+                            <div className={styles["inner-div"]}>
                                 <label htmlFor="age">Age:</label>
                                 <input
                                     style={styledInputs.includes("name") ? outlineStyle.pink : outlineStyle.unset}
@@ -101,8 +101,8 @@ export default function Edit({ onSubmitHandler }) {
                                 style={styledInputs.includes("name") ? outlineStyle.pink : outlineStyle.unset}
                                 name="petStory"
                                 id="petStory"
-                                cols="36"
-                                rows="12"
+                                cols="38"
+                                rows="13"
                                 placeholder="Whatever comes to mind. Don't be shy!"
                                 value={formValues.petStory}
                                 onChange={onChangeHandler}
