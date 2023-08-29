@@ -94,7 +94,7 @@ header {
     position: sticky;
     top: 0px;
     background-color: white;
-    z-index: 5;
+    z-index: 2;
 }
 
 header nav {
@@ -128,7 +128,7 @@ header nav li a:hover {
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 4;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.2);
 }
@@ -140,7 +140,8 @@ header nav li a:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 30vw;
-    height: 44vh;
+    height: 45vh;
+    overflow-y: hidden
 }
 
 .modal.delete-modal {
