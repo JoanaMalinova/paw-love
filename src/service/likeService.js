@@ -15,6 +15,5 @@ export async function likePet(data) {
 
     const userLikeRef = doc(db, "users", data.userID);
 
-
 }
 
