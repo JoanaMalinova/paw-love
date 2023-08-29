@@ -13,7 +13,7 @@ export default function LikesAndButtons({ id, ownerId, petName, setPets, userId,
 
     const { user } = useAuth();
 
-    const { comments, likes, liked, setLiked } = useContext(CommentLikeContext);
+    const { comments, likes, liked, setLiked, setLikes } = useContext(CommentLikeContext);
 
     const onDeleteClick = () => {
         const modal = document.getElementById("del-modal");
@@ -30,9 +30,15 @@ export default function LikesAndButtons({ id, ownerId, petName, setPets, userId,
     }
 
     const onLike = async () => {
-        const data = { petId: id };
-        await likePet(data);
-        setLiked(1);
+        const data = { petId: id, userId };
+        const isLiked = await likePet(data);
+
+        setLiked(isLiked);
+        if (liked) {
+            setLikes(curr => curr - 1);
+        } else {
+            setLikes(curr => curr + 1);
+        }
     }
 
     const navigateToEdit = () => {
@@ -48,10 +54,19 @@ export default function LikesAndButtons({ id, ownerId, petName, setPets, userId,
         }
     }
 
+    const likeColorStyle = {
+        lighter: {
+            opacity: 0.6
+        },
+        normal: {
+            opacity: 1
+        }
+    }
+
     return (
         <div className={styles["like-div"]}>
             <div className={styles["likes-and-comments"]}>
-                {likes == 1 ? <p> {likes} <span className="pink">like <i className="fa-solid fa-heart"></i></span></p>
+                {likes == 1 ? <p> {likes} <span className="pink">like <i className="fa-solid fa-thumbs-up"></i></span></p>
                     : <p> {likes} <span className={`pink ${styles["comment-link"]}`}>likes <i className="fa-solid fa-thumbs-up"></i></span></p>}
 
                 {comments?.length === 1 ? <p> {comments?.length} <Link to={`/pet-cave/${id}/comments`} ><span className="pink">comment </span><i className="fa-solid fa-comment"></i></Link></p> :
@@ -64,9 +79,9 @@ export default function LikesAndButtons({ id, ownerId, petName, setPets, userId,
                             <button className="submit-btn" onClick={navigateToEdit}>Edit</button>
                             <button className="submit-btn" onClick={onDeleteClick} >Delete</button>
                         </div>
-                        : liked ? <div className={styles["bottom-div"]}><p className={styles["add-comment"]} onClick={onModalAppear}>Add a comment <i className="fa-solid fa-comment"></i></p></div> :
-                            <div className={styles["bottom-div"]}><p className={styles["add-comment"]} onClick={onLike}><i className="fa-solid fa-thumbs-up fa-xl"></i></p>
-                                <p className={styles["add-comment"]} onClick={onModalAppear}><i className="fa-solid fa-comment fa-xl"></i></p></div>
+                        :
+                        <div className={styles["bottom-div"]}><p className={styles["add-comment"]} onClick={onLike}><i className="fa-solid fa-thumbs-up fa-xl" style={liked ? likeColorStyle.lighter : likeColorStyle.normal}></i></p>
+                            <p className={styles["add-comment"]} onClick={onModalAppear}><i className="fa-solid fa-comment fa-xl"></i></p></div>
                     }
                     <CommentModal id={id} userId={userId} username={username} />
                     <DeleteModal petName={petName} setPets={setPets} id={id} />

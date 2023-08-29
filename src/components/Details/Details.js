@@ -7,6 +7,7 @@ import { CommentLikeContext } from '../../contexts/CommentLikeContext';
 import styles from '../../styles/Details.module.css';
 import { Loading } from '../special/Loading';
 import { useAuth } from '../../hooks/useAuth';
+import { checkIfLiked } from '../../service/likeService';
 
 
 export default function Details({ setPets, isLoading, setIsLoading }) {
@@ -35,13 +36,17 @@ export default function Details({ setPets, isLoading, setIsLoading }) {
                 setIsLoading(false);
                 console.log(err.message);
             });
-    }, [petId])
+        checkIfLiked({ userId: user?.uid, petId })
+            .then((res) => setLiked(res))
+    }, [petId, user])
 
     const context = {
         comments,
         setComments,
         likes,
-        setLikes
+        liked,
+        setLikes,
+        setLiked
     }
 
     const detailsCard = (
@@ -51,7 +56,12 @@ export default function Details({ setPets, isLoading, setIsLoading }) {
                     <img src={data.imageUrl} />
                 </div>
                 {location.pathname == `/pet-cave/${petId}` ?
-                    <PetProfile data={data} petId={petId} setPets={setPets} userId={user?.uid} username={user?.displayName} /> :
+                    <PetProfile
+                        data={data}
+                        petId={petId}
+                        setPets={setPets}
+                        userId={user?.uid}
+                        username={user?.displayName} /> :
                     <Comments data={data} />
                 }
             </div>
