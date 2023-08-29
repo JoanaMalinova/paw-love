@@ -72,7 +72,7 @@ function App() {
     return (
         <AuthContext.Provider value={user}>
             <ErrorBoundary>
-                <div>
+                <>
                     <Header />
                     <main>
                         <Routes>
@@ -107,7 +107,7 @@ function App() {
                         </Routes>
                     </main>
                     <Footer />
-                </div>
+                </>
             </ErrorBoundary >
         </AuthContext.Provider>
     );

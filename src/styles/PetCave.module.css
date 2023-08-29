@@ -9,7 +9,7 @@
     max-width: 70vw;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 20px;
-    padding-top: 30px;
+    padding: 3vh 0 5vh 0;
 }
 
 .card {

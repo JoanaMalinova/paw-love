@@ -19,15 +19,14 @@ export default function CreatePost({ submitHandler }) {
     const data = formValues;
 
     return (
-
         <div className={styles["create-wrapper"]}>
             <img src="images/guinea pig-create.png" alt="guinea-pig" className={styles["quinea-pig-img"]} />
-            <Description />
-            <form onSubmit={onSubmit}>
-                <fieldset className={`${styles.field} ${styles["create-field"]}`}>
-                    <div className={styles["input-wrapper"]}>
+            <div className={styles["central-wrapper"]}>
+                <Description />
+                <form onSubmit={onSubmit} className={styles.field}>
+                    <fieldset className={styles["create-field"]}>
                         <div className={styles["left-container"]}>
-                            <div>
+                            <div className={styles["inner-div"]}>
                                 <label htmlFor="name">Pet Name:</label>
                                 <input
                                     style={styledInputs.includes("name") ? outlineStyle.pink : outlineStyle.unset}
@@ -37,7 +36,7 @@ export default function CreatePost({ submitHandler }) {
                                     value={data.name}
                                     onChange={onChangeHandler} />
                             </div>
-                            <div>
+                            <div className={styles["inner-div"]}>
                                 <label htmlFor="imageUrl">Picture:</label>
                                 <input
                                     style={styledInputs.includes("imageUrl") ? outlineStyle.pink : outlineStyle.unset}
@@ -47,7 +46,7 @@ export default function CreatePost({ submitHandler }) {
                                     value={data.imageUrl}
                                     onChange={onChangeHandler} />
                             </div>
-                            <div>
+                            <div className={styles["inner-div"]}>
                                 <label htmlFor="breed">Breed:</label>
                                 <input
                                     style={styledInputs.includes("breed") ? outlineStyle.pink : outlineStyle.unset}
@@ -77,7 +76,7 @@ export default function CreatePost({ submitHandler }) {
                                     onChange={onChangeHandler}
                                 />
                             </div>
-                            <div>
+                            <div className={styles["inner-div"]}>
                                 <label htmlFor="age">Age:</label>
                                 <input
                                     style={styledInputs.includes("age") ? outlineStyle.pink : outlineStyle.unset}
@@ -94,18 +93,18 @@ export default function CreatePost({ submitHandler }) {
                                 style={styledInputs.includes("petStory") ? outlineStyle.pink : outlineStyle.unset}
                                 name="petStory"
                                 id="petStory"
-                                cols="36"
-                                rows="12"
+                                cols="38"
+                                rows="13"
                                 placeholder="Whatever comes to mind. Don't be shy!"
                                 value={data.petStory}
                                 onChange={onChangeHandler} >
                             </textarea>
                         </div>
-                    </div>
+                    </fieldset>
                     <p className={styles.message}>{message}</p>
                     <button type="submit" className="submit-btn">Create Story</button>
-                </fieldset>
-            </form>
+                </form>
+            </div>
             <img src="images/bunny-create.png" alt="bunny" className={styles["bunny-img"]} />
         </div>
     )
