@@ -42,7 +42,11 @@ function App() {
         delete formValues.created;
         delete formValues.comments;
 
-        const currPet = pets.find(pet => pet.petId === petId);
+        let currPet = pets.find(pet => pet.petId === petId);
+
+        if (!currPet) {
+            currPet = {};
+        }
 
         const currPetvalues = Object.values(currPet);
 

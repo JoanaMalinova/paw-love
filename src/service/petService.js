@@ -1,4 +1,17 @@
-import { collection, doc, setDoc, getFirestore, getDocs, getDoc, query, where, Timestamp, orderBy, updateDoc } from "firebase/firestore";
+import {
+    collection,
+    doc,
+    setDoc,
+    getFirestore,
+    getDocs,
+    getDoc,
+    query,
+    where,
+    Timestamp,
+    orderBy,
+    updateDoc,
+    deleteDoc
+} from "firebase/firestore";
 import { firebaseApp } from "../firebase_setup/firebase";
 
 
@@ -38,7 +51,7 @@ export async function editStory(id, data) {
 
     const petRef = doc(db, "pets", id);
 
-    return await updateDoc(petRef, data);
+    await updateDoc(petRef, data);
 
 }
 
@@ -61,7 +74,7 @@ export async function createStory(data, ownerId) {
 }
 
 export async function deleteStory(id) {
-
+    await deleteDoc(doc(db, "pets", id));
 }
 
 
