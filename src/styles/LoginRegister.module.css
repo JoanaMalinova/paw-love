@@ -22,6 +22,10 @@
     /* position: relative; */
 }
 
+.field input {
+    width: 16vw;
+}
+
 .form-wrapper .field {
     width: 30vw;
     flex-direction: column;
