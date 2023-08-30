@@ -13,6 +13,7 @@ import {
     deleteDoc
 } from "firebase/firestore";
 import { firebaseApp } from "../firebase_setup/firebase";
+import { history } from "../helpers/history";
 
 
 const db = getFirestore(firebaseApp);
@@ -27,7 +28,7 @@ export async function getPet(id) {
         return docSnap.data();
 
     } else {
-        throw new Error("No such document!");
+        throw new Error("No such document!")
     }
 }
 
@@ -38,6 +39,7 @@ export async function getAll() {
 
     const snapshots = await getDocs(q);
     snapshots.forEach((currQS) => result.push(currQS.data()));
+
     return result;
 }
 
@@ -48,6 +50,7 @@ export async function getMy(userId) {
 
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((currQS) => result.push(currQS.data()));
+
     return result;
 
 }
@@ -62,6 +65,7 @@ export async function editStory(id, data) {
     } catch (err) {
 
         console.log(err.message)
+        history.navigate('/error');
 
     }
 
@@ -87,7 +91,7 @@ export async function createStory(data, ownerId) {
 
     } catch (err) {
         console.log(err.message);
-
+        history.navigate('/error');
     }
 
 }
@@ -100,6 +104,7 @@ export async function deleteStory(id) {
     } catch (err) {
 
         console.log(err.message);
+        history.navigate('/error');
 
     }
 

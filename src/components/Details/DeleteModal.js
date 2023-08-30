@@ -1,9 +1,7 @@
-import { useNavigate } from "react-router-dom";
 import { deleteStory } from "../../service/petService";
+import { history } from "../../helpers/history";
 
 export function DeleteModal({ petName, setPets, id }) {
-
-    const navigate = useNavigate();
 
     const getConfirmation = async (ev) => {
         let confirmed;
@@ -15,8 +13,8 @@ export function DeleteModal({ petName, setPets, id }) {
         if (confirmed) {
             await deleteStory(id);
             setPets(state => state.filter((curr) => curr._id !== id));
-            navigate('/pet-cave');
-        } else{
+            history.navigate('/pet-cave');
+        } else {
             ev.currentTarget.style.display = "none";
         }
     }
@@ -31,7 +29,7 @@ export function DeleteModal({ petName, setPets, id }) {
                         <button className="confirm-delete submit-btn">Delete</button>
                         <button className="cancel-delete submit-btn">Cancel</button>
                     </div>
-                </div>                
+                </div>
             </div>
         </div>
     )

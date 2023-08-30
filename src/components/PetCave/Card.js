@@ -1,18 +1,16 @@
-import { useNavigate } from 'react-router-dom';
 import styles from "../../styles/PetCave.module.css";
+import { history } from '../../helpers/history';
 
 export default function Card({ pet }) {
 
-    const navigate = useNavigate();
-
     const onClickHandler = () => {
 
-        navigate(`/pet-cave/${pet.petId}`);
+        history.navigate(`/pet-cave/${pet.petId}`);
     }
 
     return (
         <div className={styles.card} onClick={onClickHandler} >
-            <img src={pet.imageUrl} />
+            <img src={pet.imageUrl} alt={pet.name} />
             <div className={styles["short-info-wrapper"]}>
                 <h3>{pet.name}</h3>
                 <ul>

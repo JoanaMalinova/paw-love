@@ -1,9 +1,8 @@
 import { doc, getFirestore, updateDoc, arrayUnion, Timestamp } from "firebase/firestore";
 import { firebaseApp } from "../firebase_setup/firebase";
-
+import { history } from "../helpers/history";
 
 const db = getFirestore(firebaseApp);
-
 
 export async function postComment(data) {
 
@@ -17,8 +16,10 @@ export async function postComment(data) {
                 created: Timestamp.now()
             })
         });
+
     } catch (err) {
         console.log(err);
+        history.navigate('/error');
     }
 
 }

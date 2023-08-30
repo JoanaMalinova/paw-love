@@ -14,7 +14,7 @@ export function Comments({ data }) {
                 {comments?.length ?
                     <ul className={styles["comment-holder"]}>
                         {comments.map((curr) => <Comment
-                            key={curr._id}
+                            key={curr.created.toDate().toString()}
                             comment={curr.comment}
                             username={curr.username}
                             created={curr.created.toDate().toDateString()}

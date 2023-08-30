@@ -1,11 +1,11 @@
-import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
+import { history } from "../../helpers/history";
 
 export function RouteGuard() {
 
-    const location = useLocation();
-    const path = location.pathname;
+    const path = history.location.pathname;
     const user = useContext(AuthContext);
 
     if (path === "/login" || path === "/register") {
@@ -20,5 +20,5 @@ export function RouteGuard() {
 
     return (
         <Outlet />
-    );
+    )
 }

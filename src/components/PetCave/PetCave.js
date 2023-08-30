@@ -3,12 +3,10 @@ import { getAll } from "../../service/petService";
 import Card from "./Card";
 import styles from "../../styles/PetCave.module.css";
 import { Loading } from "../special/Loading";
-import { useNavigate } from "react-router-dom";
+import { history } from "../../helpers/history";
 
 
 export default function PetCave({ setPets, pets, isLoading, setIsLoading }) {
-
-    const navigate = useNavigate();
 
     useEffect(() => {
         setIsLoading(true);
@@ -20,7 +18,7 @@ export default function PetCave({ setPets, pets, isLoading, setIsLoading }) {
             .catch((err) => {
                 console.log(err.message);
                 setIsLoading(false);
-                navigate('/error')
+                history.navigate('/error')
             })
     }, []);
 

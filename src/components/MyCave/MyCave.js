@@ -4,17 +4,17 @@ import Card from "../PetCave/Card";
 import styles from "../../styles/PetCave.module.css";
 import { Loading } from "../special/Loading";
 import { useAuth } from "../../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import { history } from "../../helpers/history";
 
 
 export default function MyCave({ isLoading, setIsLoading }) {
 
     const [myPets, setMyPets] = useState([]);
     const { user } = useAuth();
-    const navigate = useNavigate();
 
     useEffect(() => {
         setIsLoading(true);
+
         if (user) {
             getMy(user.uid)
                 .then(result => {
@@ -24,7 +24,7 @@ export default function MyCave({ isLoading, setIsLoading }) {
                 .catch((err) => {
                     console.log(err.message);
                     setIsLoading(false);
-                    navigate('/error');
+                    history.navigate('/error');
                 })
         }
     }, [user]);

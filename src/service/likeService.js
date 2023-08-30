@@ -1,5 +1,6 @@
 import { doc, getFirestore, updateDoc, increment, getDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 import { firebaseApp } from "../firebase_setup/firebase";
+import { history } from "../helpers/history";
 
 const db = getFirestore(firebaseApp);
 const userRef = (data) => doc(db, "users", data.userId);
@@ -16,6 +17,7 @@ export async function checkIfLiked(data) {
 }
 
 export async function likePet(data) {
+
     try {
         const liked = await checkIfLiked(data);
 
@@ -40,12 +42,13 @@ export async function likePet(data) {
         }
 
         return !liked;
+
     } catch (err) {
 
         console.log(err.message);
+        history.navigate('/error');
 
     }
-
 
 }
 

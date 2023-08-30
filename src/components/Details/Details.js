@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getPet } from '../../service/petService';
 import { PetProfile } from './PetProfile';
 import { Comments } from './Comments';
@@ -8,6 +8,7 @@ import styles from '../../styles/Details.module.css';
 import { Loading } from '../special/Loading';
 import { useAuth } from '../../hooks/useAuth';
 import { checkIfLiked } from '../../service/likeService';
+import { history } from '../../helpers/history';
 
 
 export default function Details({ setPets, isLoading, setIsLoading }) {
@@ -21,27 +22,35 @@ export default function Details({ setPets, isLoading, setIsLoading }) {
 
     const { user } = useAuth();
 
-    const location = useLocation();
-
     useEffect(() => {
         setIsLoading(true);
-
-        Promise.all([
-            getPet(petId),
-            checkIfLiked({ userId: user?.uid, petId })
-        ])
+        getPet(petId)
             .then((res) => {
-                setData(res[0]);
-                setComments(res[0].comments);
-                setLikes(res[0].likes);
+                setData(res);
+                if (res.comments) {
+                    setComments(res.comments);
+                }
+                setLikes(res.likes);
                 setIsLoading(false);
-                setLiked(res[1])
             })
             .catch((err) => {
                 setIsLoading(false);
                 console.log(err.message);
+                history.navigate('/error');
             });
 
+        if (user) {
+
+            checkIfLiked({ userId: user.uid, petId })
+                .then((res) => {
+                    setLiked(res)
+                })
+                .catch((err) => {
+                    setIsLoading(false);
+                    console.log(err.message);
+                    history.navigate('/error');
+                });
+        }
     }, [petId, user])
 
     const context = {
@@ -57,9 +66,9 @@ export default function Details({ setPets, isLoading, setIsLoading }) {
         <div className={styles["outer-wrapper"]}>
             <div className={styles["details-wrapper"]}>
                 <div className={styles["profile-pic"]}>
-                    <img src={data.imageUrl} />
+                    <img src={data.imageUrl} alt={data.name} />
                 </div>
-                {location.pathname == `/pet-cave/${petId}` ?
+                {history.location.pathname === `/pet-cave/${petId}` ?
                     <PetProfile
                         data={data}
                         petId={petId}

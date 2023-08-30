@@ -1,7 +1,8 @@
 import {
     Routes,
     Route,
-    useNavigate
+    useNavigate,
+    useLocation
 } from 'react-router-dom';
 
 import Header from "./components/Header/Header";
@@ -16,8 +17,8 @@ import Edit from "./components/Edit/Edit";
 import MyCave from "./components/MyCave/MyCave";
 import Logout from "./components/Logout/Logout";
 import NotFound from "./components/special/404";
-import ErrorBoundary from "./components/special/ErrorBoundary";
 import { RouteGuard } from "./components/special/RouteGuard";
+import { history } from './helpers/history';
 
 import { useState } from "react";
 import { PetOwner } from "./components/special/PetOwner";
@@ -32,13 +33,14 @@ function App() {
     const [pets, setPets] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const { user } = useAuth();
-    const navigate = useNavigate();
+    history.navigate = useNavigate();
+    history.location = useLocation();
 
     const submitHandler = async (data, userId) => {
 
         await createStory(data, userId);
         setPets(state => [...state, data]);
-        navigate("/pet-cave");
+        history.navigate("/pet-cave");
     };
 
     const onSubmitHandler = async (data, petId) => {
@@ -71,50 +73,48 @@ function App() {
 
         }
 
-        navigate(`/pet-cave/${petId}`);
+        history.navigate(`/pet-cave/${petId}`);
     };
 
     return (
         <AuthContext.Provider value={user}>
-            <ErrorBoundary>
-                <>
-                    <Header />
-                    <main>
-                        <Routes>
-                            <Route path="/" element={<Home />} />
-                            <Route path="/pet-cave" element={<PetCave
+            <>
+                <Header />
+                <main>
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/pet-cave" element={<PetCave
+                            setPets={setPets}
+                            pets={pets}
+                            isLoading={isLoading}
+                            setIsLoading={setIsLoading} />} />
+                        <Route path="/pet-cave/:petId" element={<Details
+                            setPets={setPets}
+                            isLoading={isLoading}
+                            setIsLoading={setIsLoading} />} />
+                        <Route element={<RouteGuard isLoading={isLoading} setIsLoading={setIsLoading} />}>
+                            <Route path="/logout" element={<Logout />} />
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/register" element={<Register />} />
+                            <Route path="/create" element={<CreatePost submitHandler={submitHandler} />} />
+                            <Route path="/pet-cave/:petId/comments" element={<Details
                                 setPets={setPets}
-                                pets={pets}
                                 isLoading={isLoading}
                                 setIsLoading={setIsLoading} />} />
-                            <Route path="/pet-cave/:petId" element={<Details
-                                setPets={setPets}
+                            <Route path="/pet-cave/:petId/edit" element={
+                                <PetOwner pets={pets} isLoading={isLoading} setIsLoading={setIsLoading}>
+                                    <Edit onSubmitHandler={onSubmitHandler} />
+                                </PetOwner>
+                            } />
+                            <Route path="/my-cave" element={<MyCave
                                 isLoading={isLoading}
                                 setIsLoading={setIsLoading} />} />
-                            <Route element={<RouteGuard />}>
-                                <Route path="/logout" element={<Logout />} />
-                                <Route path="/login" element={<Login />} />
-                                <Route path="/register" element={<Register />} />
-                                <Route path="/create" element={<CreatePost submitHandler={submitHandler} />} />
-                                <Route path="/pet-cave/:petId/comments" element={<Details
-                                    setPets={setPets}
-                                    isLoading={isLoading}
-                                    setIsLoading={setIsLoading} />} />
-                                <Route path="/pet-cave/:petId/edit" element={
-                                    <PetOwner pets={pets}>
-                                        <Edit onSubmitHandler={onSubmitHandler} />
-                                    </PetOwner>
-                                } />
-                                <Route path="/my-cave" element={<MyCave
-                                    isLoading={isLoading}
-                                    setIsLoading={setIsLoading} />} />
-                            </Route>
-                            <Route path="*" element={<NotFound />} />
-                        </Routes>
-                    </main>
-                    <Footer />
-                </>
-            </ErrorBoundary >
+                        </Route>
+                        <Route path="*" element={<NotFound />} />
+                    </Routes>
+                </main>
+                <Footer />
+            </>
         </AuthContext.Provider>
     );
 }

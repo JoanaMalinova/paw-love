@@ -1,15 +1,14 @@
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { CommentLikeContext } from "../../contexts/CommentLikeContext";
 import { useAuth } from "../../hooks/useAuth";
 import { likePet } from "../../service/likeService";
 import { CommentModal } from "./CommentModal";
 import styles from '../../styles/Details.module.css';
 import { DeleteModal } from "./DeleteModal";
+import { history } from "../../helpers/history";
 
 export default function LikesAndButtons({ id, ownerId, petName, setPets, userId, username }) {
-
-    const navigate = useNavigate();
 
     const { user } = useAuth();
 
@@ -23,7 +22,7 @@ export default function LikesAndButtons({ id, ownerId, petName, setPets, userId,
             modal.style.display = "none";
         }
         window.onclick = function (ev) {
-            if (ev.target == modal) {
+            if (ev.target === modal) {
                 modal.style.display = "none";
             }
         }
@@ -42,7 +41,7 @@ export default function LikesAndButtons({ id, ownerId, petName, setPets, userId,
     }
 
     const navigateToEdit = () => {
-        navigate(`/pet-cave/${id}/edit`);
+        history.navigate(`/pet-cave/${id}/edit`);
     }
 
     const onModalAppear = () => {
@@ -66,15 +65,15 @@ export default function LikesAndButtons({ id, ownerId, petName, setPets, userId,
     return (
         <div className={styles["like-div"]}>
             <div className={styles["likes-and-comments"]}>
-                {likes == 1 ? <p> {likes} <span className="pink">like <i className="fa-solid fa-thumbs-up"></i></span></p>
+                {likes === 1 ? <p> {likes} <span className="pink">like <i className="fa-solid fa-thumbs-up"></i></span></p>
                     : <p> {likes} <span className={`pink ${styles["comment-link"]}`}>likes <i className="fa-solid fa-thumbs-up"></i></span></p>}
 
-                {comments?.length === 1 ? <p> {comments?.length} <Link to={`/pet-cave/${id}/comments`} ><span className="pink">comment </span><i className="fa-solid fa-comment"></i></Link></p> :
-                    <p> {comments?.length} <Link to={`/pet-cave/${id}/comments`} ><span className="pink">comments </span><i className="fa-solid fa-comment"></i></Link></p>}
+                {comments.length === 1 ? <p> {comments.length} <Link to={`/pet-cave/${id}/comments`} ><span className="pink">comment </span><i className="fa-solid fa-comment"></i></Link></p> :
+                    <p> {comments.length} <Link to={`/pet-cave/${id}/comments`} ><span className="pink">comments </span><i className="fa-solid fa-comment"></i></Link></p>}
             </div>
             {user &&
                 <div className={styles["button-div"]}>
-                    {ownerId == user?.uid ?
+                    {ownerId === user?.uid ?
                         <div className={styles["edit-del-btn-wrapper"]}>
                             <button className="submit-btn" onClick={navigateToEdit}>Edit</button>
                             <button className="submit-btn" onClick={onDeleteClick} >Delete</button>

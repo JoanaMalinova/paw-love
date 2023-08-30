@@ -1,17 +1,33 @@
 import { Navigate, useParams } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
+import { Loading } from "./Loading";
+import { useEffect } from "react";
 
-export function PetOwner({ children, pets }) {
+export function PetOwner({ children, pets, isLoading, setIsLoading }) {
 
     const { petId } = useParams();
     const user = useContext(AuthContext);
 
-    const currPet = pets.find((pet) => pet._id == petId);
+    useEffect(() => {
+        if (!user) {
+            setIsLoading(true);
+        } else {
+            setIsLoading(false);
+        }
+    }, [user]);
 
-    if (currPet && currPet._ownerId !== user.uid) {
+    const currPet = pets.find((pet) => pet.petId === petId);
+
+    if (currPet && currPet.ownerId !== user?.uid && !isLoading) {
+        console.log('im in!')
         return <Navigate to={`/pet-cave/${petId}`} replace />
     }
 
-    return children;
+    return (
+        <>
+            {isLoading ? <Loading /> : children}
+        </>
+    )
+
 }

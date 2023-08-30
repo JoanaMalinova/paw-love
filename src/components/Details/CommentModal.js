@@ -1,14 +1,13 @@
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { CommentLikeContext } from "../../contexts/CommentLikeContext";
 import { useForm } from "../../hooks/useForm";
 import { postComment } from "../../service/commentService";
+import { history } from "../../helpers/history";
 
 export function CommentModal({ id, userId, username }) {
 
     const { formValues, onChangeHandler } = useForm({});
     const { setComments } = useContext(CommentLikeContext);
-    const navigate = useNavigate();
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
@@ -21,7 +20,7 @@ export function CommentModal({ id, userId, username }) {
 
         postComment({ petId, comment, userId, username });
 
-        navigate(`/pet-cave/${id}/comments`);
+        history.navigate(`/pet-cave/${id}/comments`);
     }
 
     return (

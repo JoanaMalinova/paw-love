@@ -1,10 +1,8 @@
-import { useNavigate } from "react-router-dom";
 import { signIn, signUp, signOutUser } from "../service/authService";
+import { history } from "../helpers/history";
 
 
 export function useSubmit() {
-
-    const navigate = useNavigate();
 
     const onLoginSubmit = async (data) => {
 
@@ -16,12 +14,12 @@ export function useSubmit() {
 
             return result.error
         }
-        navigate("/pet-cave");
+        history.navigate("/pet-cave");
     }
 
     const onRegisterSubmit = async (data) => {
 
-        const { username, email, password, rePass } = data;
+        const { username, email, password } = data;
 
         const result = await signUp(username, email, password);
 
@@ -30,7 +28,7 @@ export function useSubmit() {
             return result.error
         }
 
-        navigate("/pet-cave");
+        history.navigate("/pet-cave");
     }
 
     const onLogout = async () => {

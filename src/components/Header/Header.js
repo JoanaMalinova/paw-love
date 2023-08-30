@@ -1,18 +1,16 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "../../styles/Header.module.css";
 import { useAuth } from "../../hooks/useAuth";
+import { history } from "../../helpers/history";
 
 export default function Header() {
 
     const { user } = useAuth();
 
-    const navigate = useNavigate();
-    const location = useLocation();
-
-    const path = location.pathname;
+    const path = history.location.pathname;
 
     const onLogoClickHandler = () => {
-        navigate("/");
+        history.navigate("/");
     }
 
     const linkColorStyle = {
