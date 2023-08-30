@@ -77,8 +77,6 @@ textarea {
     text-indent: 20px;
     border-radius: 30px;
     border: none;
-    font-size: 20px;
-    color: rgba(0, 0, 0, 0.691);
 }
 
 input:focus,

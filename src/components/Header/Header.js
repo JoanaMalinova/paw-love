@@ -32,7 +32,7 @@ export default function Header() {
     return (
         <header >
             <div className={styles.logo} onClick={onLogoClickHandler}>
-                <img src="images/logo.png" alt="paw-love-logo" />
+                <img src="http://localhost:3000/images/logo.png" alt="paw-love-logo" />
                 <p><span className="green">PAW</span><span className="pink">Love</span></p>
             </div>
             {user &&
