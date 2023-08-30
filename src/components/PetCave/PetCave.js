@@ -14,8 +14,8 @@ export default function PetCave({ setPets, pets, isLoading, setIsLoading }) {
                 setPets(result);
                 setIsLoading(false);
             })
-            .catch((error) => {
-                console.log(error.message);
+            .catch((err) => {
+                console.log(err.message);
                 setIsLoading(false);
             })
     }, []);

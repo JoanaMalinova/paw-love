@@ -30,10 +30,10 @@ function App() {
     const navigate = useNavigate();
 
     const submitHandler = async (data, userId) => {
+
         await createStory(data, userId);
         setPets(state => [...state, data]);
         navigate("/pet-cave");
-
     };
 
     const onSubmitHandler = async (data, petId) => {

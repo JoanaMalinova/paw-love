@@ -19,7 +19,8 @@ export default function MyCave({ isLoading, setIsLoading }) {
                 setMyPets(result);
                 setIsLoading(false);
             })
-            .catch(() => {
+            .catch((err) => {
+                console.log(err.message);
                 setIsLoading(false);
             })
 

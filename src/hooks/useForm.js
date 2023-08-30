@@ -22,8 +22,17 @@ export function useForm(initialValues, onSubmitHandler, userId, petId) {
 
         if (!styledValues.length) {
             const result = await onSubmitHandler(formValues, userId, petId);
-            if (result === "Login or password don't match") {
-                setMessage(result);
+
+            console.log(result);
+
+            if (result === "Firebase: Error (auth/wrong-password)." ||
+                result === "Firebase: Error (auth/invalid-email).") {
+                setMessage("Invalid email or password!");
+            }
+
+            if (result === "Firebase: Error (auth/email-already-in-use).") {
+
+                setMessage("Email already exists!")
             }
         }
     }

@@ -25,19 +25,23 @@ export default function Details({ setPets, isLoading, setIsLoading }) {
 
     useEffect(() => {
         setIsLoading(true);
-        getPet(petId)
-            .then((res => {
-                setData(res);
-                setComments(res.comments);
-                setLikes(res.likes);
+
+        Promise.all([
+            getPet(petId),
+            checkIfLiked({ userId: user?.uid, petId })
+        ])
+            .then((res) => {
+                setData(res[0]);
+                setComments(res[0].comments);
+                setLikes(res[0].likes);
                 setIsLoading(false);
-            }))
+                setLiked(res[1])
+            })
             .catch((err) => {
                 setIsLoading(false);
                 console.log(err.message);
             });
-        checkIfLiked({ userId: user?.uid, petId })
-            .then((res) => setLiked(res))
+
     }, [petId, user])
 
     const context = {

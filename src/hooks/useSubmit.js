@@ -13,8 +13,8 @@ export function useSubmit() {
         const result = await signIn(email, password);
 
         if (result.error) {
-            console.log(result.error);
-            return
+
+            return result.error
         }
         navigate("/pet-cave");
     }
@@ -26,8 +26,8 @@ export function useSubmit() {
         const result = await signUp(username, email, password);
 
         if (result.error) {
-            console.log(result.error);
-            return
+
+            return result.error
         }
 
         navigate("/pet-cave");
