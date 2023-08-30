@@ -1,9 +1,10 @@
 .create-wrapper {
     display: flex;
     align-items: flex-end;
-    justify-content: space-around;
+    justify-content: center;
     position: relative;
     padding: 5vh 0 10vh 0;
+    gap: 30px;
 }
 
 .central-wrapper {

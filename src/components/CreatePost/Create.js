@@ -20,7 +20,7 @@ export default function CreatePost({ submitHandler }) {
 
     return (
         <div className={styles["create-wrapper"]}>
-            <img src="images/guinea pig-create.png" alt="guinea-pig" className={styles["quinea-pig-img"]} />
+            <img src="https://media.istockphoto.com/id/500404999/photo/yellow-naped-parrot-isolated-on-white.jpg?s=612x612&w=0&k=20&c=E2R1az_4rIVb_p3FpUaFj3UnQX8-6IHaMS8XcQkV1SM=" alt="parrot" className={styles["quinea-pig-img"]} />
             <div className={styles["central-wrapper"]}>
                 <Description />
                 <form onSubmit={onSubmit} className={styles.field}>
@@ -105,7 +105,7 @@ export default function CreatePost({ submitHandler }) {
                     <button type="submit" className="submit-btn">Create Story</button>
                 </form>
             </div>
-            <img src="images/bunny-create.png" alt="bunny" className={styles["bunny-img"]} />
+            <img src="https://e0.pxfuel.com/wallpapers/567/915/desktop-wallpaper-rabbit-white-background-white-bunny-thumbnail.jpg" alt="bunny" className={styles["bunny-img"]} />
         </div>
     )
 }

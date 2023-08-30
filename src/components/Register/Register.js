@@ -69,7 +69,7 @@ export default function Register() {
                     </div>
                 </fieldset>
             </form>
-            <img src="images/form-doggy.png" alt="bulldog" />
+            <img src="https://c4.wallpaperflare.com/wallpaper/2/880/843/aquariums-fish-white-background-spikes-wallpaper-preview.jpg" alt="bulldog" />
         </div>
     )
 }
