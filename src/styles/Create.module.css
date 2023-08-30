@@ -9,6 +9,7 @@
 .central-wrapper {
     min-width: 50vw;
     min-height: 80vh;
+
 }
 
 .field {
@@ -23,6 +24,9 @@
     border: none;
     color: white;
     flex-direction: column;
+    -webkit-box-shadow: 10px 10px 13px 4px rgba(120, 120, 120, 1);
+    -moz-box-shadow: 10px 10px 13px 4px rgba(120, 120, 120, 1);
+    box-shadow: 10px 10px 13px 4px rgba(120, 120, 120, 1);
 }
 
 .create-field {
@@ -55,6 +59,9 @@
     padding: 16px;
     border-radius: 30px;
     height: 25%;
+    -webkit-box-shadow: 10px 10px 36px -4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 36px -4px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 36px -4px rgba(0, 0, 0, 0.75);
 }
 
 .descr-wrapper h2 {

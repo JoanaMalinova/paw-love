@@ -1,7 +1,7 @@
 .outer-wrapper {
     width: auto;
     min-height: 80vh;
-    padding: 2vh 0 10vh 0;
+    padding: 4vh 0 10vh 0;
 }
 
 .details-wrapper {
@@ -13,6 +13,9 @@
     display: flex;
     justify-content: space-between;
     font-size: 24px;
+    -webkit-box-shadow: 10px 10px 36px -4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 36px -4px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 36px -4px rgba(0, 0, 0, 0.75);
 }
 
 .profile-pic {

@@ -32,6 +32,9 @@
     outline: 4px solid #ea2879;
     cursor: pointer;
     background-color: rgba(166, 219, 103, 0.8);
+    -webkit-box-shadow: 10px 10px 36px -4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 36px -4px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 36px -4px rgba(0, 0, 0, 0.75);
 }
 
 .cave-wrapper .card img {

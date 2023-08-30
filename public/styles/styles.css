@@ -103,6 +103,7 @@ header {
     top: 0px;
     background-color: white;
     z-index: 2;
+    white-space: nowrap;
 }
 
 header nav {

@@ -2,7 +2,8 @@ import {
     Routes,
     Route,
     useNavigate,
-    useLocation
+    useLocation,
+    Navigate
 } from 'react-router-dom';
 
 import Header from "./components/Header/Header";
@@ -27,7 +28,6 @@ import { useAuth } from "./hooks/useAuth";
 
 import { createStory, editStory } from "./service/petService";
 
-
 function App() {
 
     const [pets, setPets] = useState([]);
@@ -35,6 +35,7 @@ function App() {
     const { user } = useAuth();
     history.navigate = useNavigate();
     history.location = useLocation();
+
 
     const submitHandler = async (data, userId) => {
 
@@ -110,7 +111,8 @@ function App() {
                                 isLoading={isLoading}
                                 setIsLoading={setIsLoading} />} />
                         </Route>
-                        <Route path="*" element={<NotFound />} />
+                        <Route path="/error" element={<NotFound />} />
+                        <Route path="*" element={<Navigate to="/error" />} />
                     </Routes>
                 </main>
                 <Footer />

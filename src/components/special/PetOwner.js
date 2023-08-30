@@ -19,7 +19,7 @@ export function PetOwner({ children, pets, isLoading, setIsLoading }) {
 
     const currPet = pets.find((pet) => pet.petId === petId);
 
-    if (currPet && currPet.ownerId !== user?.uid && !isLoading) {
+    if (currPet && currPet.ownerId !== user.uid && !isLoading) {
         console.log('im in!')
         return <Navigate to={`/pet-cave/${petId}`} replace />
     }
