@@ -1,7 +1,8 @@
 .logo {
+    font-family: 'Stalemate', cursive;
     display: flex;
     align-items: center;
-    font-size: 29px;
+    font-size: 44px;
     margin-right: auto;
     margin-left: 220px;
 }
@@ -9,6 +10,7 @@
 .logo:hover {
     cursor: pointer;
 }
+
 
 .logo p {
     font-weight: 600;

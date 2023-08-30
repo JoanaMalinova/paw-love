@@ -12,3 +12,7 @@
     font-size: 18px;
     cursor: default;
 }
+
+.footer span {
+    font-family: 'Stalemate', cursive;
+}
