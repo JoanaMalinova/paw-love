@@ -33,7 +33,7 @@ export default function Header() {
         <header >
             <div className={styles.logo} onClick={onLogoClickHandler}>
                 <img src="images/logo.png" alt="paw-love-logo" />
-                <p>PAW<span className="pink">Love</span></p>
+                <p><span className="green">PAW</span><span className="pink">Love</span></p>
             </div>
             {user &&
                 <Link style={path === "/my-cave" ? underlineStyle.undrelined : linkColorStyle.none} to="/my-cave" className={styles["user-greet"]}>{user?.displayName}'s cave</Link>}
