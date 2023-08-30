@@ -6,6 +6,7 @@ export default function Card({ pet }) {
     const navigate = useNavigate();
 
     const onClickHandler = () => {
+
         navigate(`/pet-cave/${pet.petId}`);
     }
 

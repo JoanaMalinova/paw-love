@@ -4,6 +4,7 @@ import { firebaseApp } from "../firebase_setup/firebase";
 
 const db = getFirestore(firebaseApp);
 
+
 export async function postComment(data) {
 
     const commentPetRef = doc(db, "pets", data.petId);
@@ -17,8 +18,7 @@ export async function postComment(data) {
             })
         });
     } catch (err) {
-
-        console.log(err)
+        console.log(err);
     }
 
 }

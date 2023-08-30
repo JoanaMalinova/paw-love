@@ -62,6 +62,7 @@ export async function editStory(id, data) {
     } catch (err) {
 
         console.log(err.message)
+
     }
 
 }
@@ -85,6 +86,7 @@ export async function createStory(data, ownerId) {
         });
 
     } catch (err) {
+        console.log(err.message);
 
     }
 
@@ -98,6 +100,7 @@ export async function deleteStory(id) {
     } catch (err) {
 
         console.log(err.message);
+
     }
 
 }
