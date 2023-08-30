@@ -68,6 +68,8 @@ html input {
     border-radius: 30px;
     text-indent: 16px;
     border: none;
+    font-family: 'Delius Swash Caps', cursive;
+    color: rgba(0, 0, 0, 0.691);
 }
 
 textarea {
@@ -75,7 +77,8 @@ textarea {
     text-indent: 20px;
     border-radius: 30px;
     border: none;
-    font-size: 18px;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.691);
 }
 
 input:focus,

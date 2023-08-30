@@ -51,6 +51,7 @@
     list-style-type: none
 }
 
+
 .no-story-yet {
     position: absolute;
     text-transform: uppercase;
@@ -59,5 +60,15 @@
     color: #ea2879;
     left: 50%;
     transform: translate(-50%);
-    top: 30vh;
+    top: 40vh;
+
+}
+
+.no-story-img {
+    position: absolute;
+    height: 36vh;
+    width: auto;
+    left: 50%;
+    transform: translate(-50%);
+    top: 45vh;
 }

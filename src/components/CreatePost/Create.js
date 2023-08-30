@@ -94,7 +94,7 @@ export default function CreatePost({ submitHandler }) {
                                 name="petStory"
                                 id="petStory"
                                 cols="38"
-                                rows="13"
+                                rows="12"
                                 placeholder="Whatever comes to mind. Don't be shy!"
                                 value={data.petStory}
                                 onChange={onChangeHandler} >

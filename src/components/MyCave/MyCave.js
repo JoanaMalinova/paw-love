@@ -30,7 +30,11 @@ export default function MyCave({ isLoading, setIsLoading }) {
     }, [user]);
 
     const cave = (<div className={styles["cave-wrapper"]}>
-        {(myPets && myPets.length) ? myPets.map(pet => <Card key={pet.petId} pet={pet} />) : <p className={styles["no-story-yet"]}>No stories yet</p>}
+        {(myPets && myPets.length) ? myPets.map(pet => <Card key={pet.petId} pet={pet} />) :
+            <div>
+                <p className={styles["no-story-yet"]}>No stories yet</p>
+                <img className={styles["no-story-img"]} src="https://media.istockphoto.com/id/1494171370/photo/isolated-puppy-sleeping.webp?b=1&s=170667a&w=0&k=20&c=wfRYrVsiX2s0T28v0GN4awvsgjFi0IixN6vkn3r1OI8=" alt="sleeping dog" />
+            </div>}
     </div>);
 
     return (
