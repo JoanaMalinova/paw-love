@@ -1,10 +1,11 @@
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
 import {
     Routes,
     Route,
-    useNavigate,
+    useNavigate
 } from 'react-router-dom';
+
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 import Home from "./components/Home/Home";
 import CreatePost from "./components/CreatePost/Create";
 import Login from "./components/Login/Login";
@@ -13,14 +14,18 @@ import PetCave from "./components/PetCave/PetCave";
 import Details from "./components/Details/Details";
 import Edit from "./components/Edit/Edit";
 import MyCave from "./components/MyCave/MyCave";
+import Logout from "./components/Logout/Logout";
+import NotFound from "./components/special/404";
 import ErrorBoundary from "./components/special/ErrorBoundary";
 import { RouteGuard } from "./components/special/RouteGuard";
+
 import { useState } from "react";
 import { PetOwner } from "./components/special/PetOwner";
 import { AuthContext } from "./contexts/AuthContext";
 import { useAuth } from "./hooks/useAuth";
+
 import { createStory, editStory } from "./service/petService";
-import Logout from "./components/Logout/Logout";
+
 
 function App() {
 
@@ -104,6 +109,7 @@ function App() {
                                     isLoading={isLoading}
                                     setIsLoading={setIsLoading} />} />
                             </Route>
+                            <Route path="*" element={<NotFound />} />
                         </Routes>
                     </main>
                     <Footer />
