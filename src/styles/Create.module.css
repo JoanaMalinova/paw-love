@@ -1,3 +1,5 @@
+/* ******Outer wrappers****** */
+
 .create-wrapper {
     display: flex;
     align-items: flex-end;
@@ -8,52 +10,13 @@
 }
 
 .central-wrapper {
-    min-width: 50vw;
-    min-height: 80vh;
-
+    width: 50vw;
+    height: fit-content;
 }
 
-.field {
-    height: 75%;
-    width: auto;
-    display: flex;
-    align-items: center;
-    font-size: 25px;
-    border-radius: 30px;
-    padding: 10px 10px 20px 10px;
-    background-color: #a6db67;
-    border: none;
-    color: white;
-    flex-direction: column;
-    -webkit-box-shadow: 10px 10px 13px 4px rgba(120, 120, 120, 1);
-    -moz-box-shadow: 10px 10px 13px 4px rgba(120, 120, 120, 1);
-    box-shadow: 10px 10px 13px 4px rgba(120, 120, 120, 1);
-}
 
-.create-field {
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 4vw;
-    height: 100%;
-}
+/* **************Description wrapper*********** */
 
-.create-field>div {
-    flex-basis: 40%;
-    height: 49vh;
-}
-
-.inner-div input {
-    width: 18vw;
-    font-size: 20px;
-}
-
-.gender-wrapper {
-    display: flex;
-    gap: 5px;
-    justify-content: space-between;
-}
 
 .descr-wrapper {
     background-color: #ea2879;
@@ -85,30 +48,125 @@
     color: white;
 }
 
-.create-wrapper img {
-    width: 20vw;
+
+
+/* ************Outer form and input wrappers************ */
+
+
+
+.field {
+    height: 75%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    border-radius: 30px;
+    padding: 10px 10px 20px 10px;
+    background-color: #a6db67;
+    border: none;
+    color: white;
+    flex-direction: column;
+    -webkit-box-shadow: 10px 10px 13px 4px rgba(120, 120, 120, 1);
+    -moz-box-shadow: 10px 10px 13px 4px rgba(120, 120, 120, 1);
+    box-shadow: 10px 10px 13px 4px rgba(120, 120, 120, 1);
 }
+
+.create-field {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2vw;
+}
+
+.create-field>div {
+    width: 42%;
+    height: 100%;
+}
+
+/* ***************Left container*************** */
 
 .left-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: space-between;
-    gap: 5px;
 }
+
+/* ***Input wrappers and inputs **** */
 
 .left-container .inner-div {
     display: flex;
     flex-direction: column;
 }
 
-.message {
-    color: #ea2879;
-    font-size: 18px;
-    text-align: center;
+.left-container .inner-div {
+    width: 100%;
 }
+
+.inner-div input {
+    width: 80%;
+    font-size: 20px;
+}
+
+/* Radio buttons input */
+
+.gender-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.gender-wrapper .inner-gender-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+}
+
+.gender-wrapper .inner-gender-wrapper div {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1vw;
+}
+
+.gender-wrapper input {
+    accent-color: #ea2879;
+    height: 2vh;
+    width: 2vh;
+}
+
+
+/* *************Right conatiner************ */
 
 textarea {
     font-size: 20px;
     color: rgba(0, 0, 0, 0.691);
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+
+/* **************Images**************** */
+
+
+.create-wrapper img {
+    width: 20vw;
+}
+
+
+/* ***********Error message**************** */
+
+
+
+.message {
+    color: #ea2879;
+    font-size: 18px;
+    text-align: center;
 }

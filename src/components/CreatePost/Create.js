@@ -24,7 +24,7 @@ export default function CreatePost({ submitHandler }) {
             <div className={styles["central-wrapper"]}>
                 <Description />
                 <form onSubmit={onSubmit} className={styles.field}>
-                    <fieldset className={styles["create-field"]}>
+                    <div className={styles["create-field"]}>
                         <div className={styles["left-container"]}>
                             <div className={styles["inner-div"]}>
                                 <label htmlFor="name">Pet Name:</label>
@@ -58,23 +58,29 @@ export default function CreatePost({ submitHandler }) {
                             </div>
                             <div className={styles["gender-wrapper"]}>
                                 <p>Gender:</p>
-                                <label htmlFor="male">male</label>
-                                <input
-                                    type="radio"
-                                    id="male"
-                                    name="gender"
-                                    value="male"
-                                    checked={data.gender === "male"}
-                                    onChange={onChangeHandler} />
-                                <label htmlFor="female">female</label>
-                                <input
-                                    type="radio"
-                                    id="female"
-                                    name="gender"
-                                    value="female"
-                                    checked={data.gender === "female"}
-                                    onChange={onChangeHandler}
-                                />
+                                <div className={styles["inner-gender-wrapper"]}>
+                                    <div>
+                                        <label htmlFor="male">male</label>
+                                        <input
+                                            type="radio"
+                                            id="male"
+                                            name="gender"
+                                            value="male"
+                                            checked={data.gender === "male"}
+                                            onChange={onChangeHandler} />
+
+                                    </div>
+                                    <div>
+                                        <label htmlFor="female">female</label>
+                                        <input
+                                            type="radio"
+                                            id="female"
+                                            name="gender"
+                                            value="female"
+                                            checked={data.gender === "female"}
+                                            onChange={onChangeHandler} />
+                                    </div>
+                                </div>
                             </div>
                             <div className={styles["inner-div"]}>
                                 <label htmlFor="age">Age:</label>
@@ -100,7 +106,7 @@ export default function CreatePost({ submitHandler }) {
                                 onChange={onChangeHandler} >
                             </textarea>
                         </div>
-                    </fieldset>
+                    </div>
                     <p className={styles.message}>{message}</p>
                     <button type="submit" className="submit-btn">Create Story</button>
                 </form>

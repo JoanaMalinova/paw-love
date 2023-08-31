@@ -2,7 +2,7 @@ import { getPet } from "../../service/petService";
 import { useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import { useForm } from "../../hooks/useForm";
-import styles from "../../styles/Create.module.css";
+import styles from "../../styles/Create.module.css"
 
 export default function Edit({ onSubmitHandler }) {
 
@@ -26,7 +26,7 @@ export default function Edit({ onSubmitHandler }) {
     return (
         <div className={styles["create-wrapper"]}>
             <img src="https://photosfine.files.wordpress.com/2012/04/hamster-white-background-4.jpg?w=1200" alt="hamster" className={styles["hamster-img"]} />
-            <form onSubmit={onSubmit} >
+            <form onSubmit={onSubmit} className="edit-wrapper" >
                 <fieldset className={styles.field}>
                     <legend>Did you mean to change anything?</legend>
                     <div className={styles["create-field"]}>
@@ -63,25 +63,31 @@ export default function Edit({ onSubmitHandler }) {
                             </div>
                             <div className={styles["gender-wrapper"]}>
                                 <p>Gender:</p>
-                                <label htmlFor="male">male</label>
-                                <input
-                                    style={styledInputs.includes("name") ? outlineStyle.pink : outlineStyle.unset}
-                                    type="radio"
-                                    id="male"
-                                    name="gender"
-                                    checked={formValues.gender === "male"}
-                                    value="male"
-                                    onChange={onChangeHandler}
-                                />
-                                <label htmlFor="female">female</label>
-                                <input
-                                    type="radio"
-                                    id="female"
-                                    name="gender"
-                                    checked={formValues.gender === "female"}
-                                    value="female"
-                                    onChange={onChangeHandler}
-                                />
+                                <div className={styles["inner-gender-wrapper"]}>
+                                    <div>
+                                        <label htmlFor="male">male</label>
+                                        <input
+                                            style={styledInputs.includes("name") ? outlineStyle.pink : outlineStyle.unset}
+                                            type="radio"
+                                            id="male"
+                                            name="gender"
+                                            checked={formValues.gender === "male"}
+                                            value="male"
+                                            onChange={onChangeHandler}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="female">female</label>
+                                        <input
+                                            type="radio"
+                                            id="female"
+                                            name="gender"
+                                            checked={formValues.gender === "female"}
+                                            value="female"
+                                            onChange={onChangeHandler}
+                                        />
+                                    </div>
+                                </div>
                             </div>
                             <div className={styles["inner-div"]}>
                                 <label htmlFor="age">Age:</label>

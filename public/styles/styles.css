@@ -32,6 +32,11 @@ main {
     color: white !important;
 }
 
+.edit-wrapper {
+    width: 50vw;
+    height: fit-content
+}
+
 
 /* --------BUTTONS------------ */
 
@@ -204,8 +209,8 @@ header nav li a:hover {
 
 
 
-/* ---------------ERROR BOUNDARY------------ */
-
+/* ---------------404 error ------------ */
+/* 
 .error-wrapper {
     height: 100vh;
     width: 100%;
@@ -224,4 +229,4 @@ header nav li a:hover {
 .error-message {
     font-weight: 600;
     font-size: 30px;
-}
+} */
