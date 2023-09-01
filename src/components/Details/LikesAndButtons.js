@@ -7,6 +7,8 @@ import { CommentModal } from "./CommentModal";
 import styles from '../../styles/Details.module.css';
 import { DeleteModal } from "./DeleteModal";
 import { history } from "../../helpers/history";
+import { useState } from "react";
+
 
 export default function LikesAndButtons({ id, ownerId, petName, setPets, userId, username }) {
 
@@ -14,21 +16,10 @@ export default function LikesAndButtons({ id, ownerId, petName, setPets, userId,
 
     const { comments, likes, liked, setLiked, setLikes } = useContext(CommentLikeContext);
 
-    const onDeleteClick = () => {
-        const modal = document.getElementById("del-modal");
-        const close = document.getElementsByClassName("close-delete")[0];
-        modal.style.display = "block";
-        close.onclick = function () {
-            modal.style.display = "none";
-        }
-        window.onclick = function (ev) {
-            if (ev.target === modal) {
-                modal.style.display = "none";
-            }
-        }
-    }
+    const [commDisplay, setCommDisplay] = useState("none");
+    const [delDisplay, setDelDisplay] = useState("none");
 
-    const onLike = async () => {
+    const onLikeClick = async () => {
         const data = { petId: id, userId };
         const isLiked = await likePet(data);
 
@@ -40,17 +31,16 @@ export default function LikesAndButtons({ id, ownerId, petName, setPets, userId,
         }
     }
 
-    const navigateToEdit = () => {
+    const onCommentClick = () => {
+        setCommDisplay("block");
+    }
+
+    const onEditClick = () => {
         history.navigate(`/pet-cave/${id}/edit`);
     }
 
-    const onModalAppear = () => {
-        const modal = document.getElementById("my-modal");
-        const close = document.getElementsByClassName("comment-close")[0];
-        modal.style.display = "block";
-        close.onclick = function () {
-            modal.style.display = "none";
-        }
+    const onDeleteClick = () => {
+        setDelDisplay("block");
     }
 
     const likeColorStyle = {
@@ -61,6 +51,7 @@ export default function LikesAndButtons({ id, ownerId, petName, setPets, userId,
             opacity: 1
         }
     }
+
 
     return (
         <div className={styles["like-div"]}>
@@ -75,15 +66,15 @@ export default function LikesAndButtons({ id, ownerId, petName, setPets, userId,
                 <div className={styles["button-div"]}>
                     {ownerId === user?.uid ?
                         <div className={styles["edit-del-btn-wrapper"]}>
-                            <button className="submit-btn" onClick={navigateToEdit}>Edit</button>
+                            <button className="submit-btn" onClick={onEditClick}>Edit</button>
                             <button className="submit-btn" onClick={onDeleteClick} >Delete</button>
                         </div>
                         :
-                        <div className={styles["bottom-div"]}><p className={styles["add-comment"]} onClick={onLike}><i className="fa-solid fa-thumbs-up fa-xl" style={liked ? likeColorStyle.lighter : likeColorStyle.normal}></i></p>
-                            <p className={styles["add-comment"]} onClick={onModalAppear}><i className="fa-solid fa-comment fa-xl"></i></p></div>
+                        <div className={styles["bottom-div"]}><p className={styles["add-comment"]} onClick={onLikeClick}><i className="fa-solid fa-thumbs-up fa-xl" style={liked ? likeColorStyle.lighter : likeColorStyle.normal}></i></p>
+                            <p className={styles["add-comment"]} onClick={onCommentClick}><i className="fa-solid fa-comment fa-xl"></i></p></div>
                     }
-                    <CommentModal id={id} userId={userId} username={username} />
-                    <DeleteModal petName={petName} setPets={setPets} id={id} />
+                    <CommentModal id={id} userId={userId} username={username} display={commDisplay} setDisplay={setCommDisplay} />
+                    <DeleteModal petName={petName} setPets={setPets} id={id} display={delDisplay} setDisplay={setDelDisplay} />
                 </div>}
         </div>
     )

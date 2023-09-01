@@ -3,14 +3,17 @@ import { CommentLikeContext } from "../../contexts/CommentLikeContext";
 import { useForm } from "../../hooks/useForm";
 import { postComment } from "../../service/commentService";
 import { history } from "../../helpers/history";
+import styles from "../../styles/Modal.module.css"
 
-export function CommentModal({ id, userId, username }) {
+export function CommentModal({ id, userId, username, display, setDisplay }) {
 
     const { formValues, onChangeHandler } = useForm({});
     const { setComments } = useContext(CommentLikeContext);
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
+
+        setDisplay('none');
 
         const { comment } = formValues;
 
@@ -23,13 +26,17 @@ export function CommentModal({ id, userId, username }) {
         history.navigate(`/pet-cave/${id}/comments`);
     }
 
+    const onCloseClick = () => {
+        setDisplay('none');
+    }
+
     return (
-        <div id="my-modal" className="modal comment-modal">
+        <div className={`${styles.modal} ${styles["comment-modal"]}`} style={{ "display": display }} onClick={onCloseClick}>
             <div>
-                <span className="close comment-close">&times;</span>
+                <span className={`${styles.close} ${styles["comment-close"]}`} onClick={onCloseClick}>&times;</span>
                 <h3>Your comment here:</h3>
                 <form onSubmit={onSubmitHandler}>
-                    <label htmlFor="comment"></label>
+                    <label htmlFor="comment" />
                     <textarea
                         name="comment"
                         id="comment"
