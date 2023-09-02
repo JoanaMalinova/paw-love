@@ -26,28 +26,36 @@ export function CommentModal({ id, userId, username, display, setDisplay }) {
         history.navigate(`/pet-cave/${id}/comments`);
     }
 
-    const onCloseClick = () => {
-        setDisplay('none');
+    const onCloseClick = (ev) => {
+        if (ev.target.classList.contains('Modal_outer-wrapper__svCXZ') ||
+            ev.target.classList.contains('Modal_close__uQPKi') ||
+            ev.target.classList.contains('Modal_outer-wrapper__svCXZ')) {
+
+            ev.stopPropagation();
+            setDisplay('none');
+        }
     }
 
     return (
-        <div className={`${styles.modal} ${styles["comment-modal"]}`} style={{ "display": display }} onClick={onCloseClick}>
-            <div>
-                <span className={`${styles.close} ${styles["comment-close"]}`} onClick={onCloseClick}>&times;</span>
-                <h3>Your comment here:</h3>
-                <form onSubmit={onSubmitHandler}>
-                    <label htmlFor="comment" />
-                    <textarea
-                        name="comment"
-                        id="comment"
-                        cols="30"
-                        rows="8"
-                        value={formValues.comment || ""}
-                        onChange={onChangeHandler}
-                    >
-                    </textarea>
-                    <button type="submit" className="submit-btn">Comment</button>
-                </form>
+        <div className={styles["outer-wrapper"]} onClick={onCloseClick} style={{ "display": display }}>
+            <div className={`${styles.modal} ${styles["comment-modal"]}`} style={{ "display": display }}>
+                <div>
+                    <span className={`${styles.close} ${styles["comment-close"]}`} onClick={onCloseClick}>&times;</span>
+                    <h3>Your comment here:</h3>
+                    <form onSubmit={onSubmitHandler}>
+                        <label htmlFor="comment" />
+                        <textarea
+                            name="comment"
+                            id="comment"
+                            cols="30"
+                            rows="8"
+                            value={formValues.comment || ""}
+                            onChange={onChangeHandler}
+                        >
+                        </textarea>
+                        <button type="submit" className="submit-btn">Comment</button>
+                    </form>
+                </div>
             </div>
         </div>
     )
