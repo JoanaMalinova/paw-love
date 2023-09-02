@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import styles from "../../styles/Header.module.css";
 import { useAuth } from "../../hooks/useAuth";
 import { history } from "../../helpers/history";
+import { headerStyles } from "../../helpers/dynamic-styles";
+import { HorizontalNav } from "./HorizontalNav";
 
 export default function Header() {
 
@@ -9,24 +11,10 @@ export default function Header() {
 
     const path = history.location.pathname;
 
+    const { underlineStyle } = headerStyles;
+
     const onLogoClickHandler = () => {
         history.navigate("/");
-    }
-
-    const linkColorStyle = {
-        pink: {
-            backgroundColor: "#ea2879",
-            color: "white"
-        }
-    }
-
-    const underlineStyle = {
-        undrelined: {
-            textDecoration: "underline"
-        },
-        none: {
-            textDecoration: "none"
-        }
     }
 
     return (
@@ -36,21 +24,8 @@ export default function Header() {
                 <p><span className="green">PAW</span><span className="pink">Love</span></p>
             </div>
             {user &&
-                <Link style={path === "/my-cave" ? underlineStyle.undrelined : linkColorStyle.none} to="/my-cave" className={styles["user-greet"]}>{user?.displayName}'s cave</Link>}
-            <nav >
-                <ul>
-                    <li><Link style={path === "/" ? linkColorStyle.pink : linkColorStyle.unset} to="/" className={styles["home-link"]} >Home</Link></li>
-                    <li><Link style={path === "/pet-cave" ? linkColorStyle.pink : linkColorStyle.unset} to="/pet-cave">PetCave</Link></li>
-                    {!user ? <div className={styles.guest}>
-                        <li><Link style={path === "/register" ? linkColorStyle.pink : linkColorStyle.unset} to="/register">Register</Link></li>
-                        <li><Link style={path === "/login" ? linkColorStyle.pink : linkColorStyle.unset} to="/login">Login</Link></li>
-                    </div> :
-                        <div className={styles.user}>
-                            <li><Link style={path === "/create" ? linkColorStyle.pink : linkColorStyle.unset} to="/create">Post Story</Link></li>
-                            <li><Link to="/logout">Logout</Link></li>
-                        </div>}
-                </ul>
-            </nav>
+                <Link style={path === "/my-cave" ? underlineStyle.undrelined : underlineStyle.none} to="/my-cave" className={styles["user-greet"]}>{user?.displayName}'s cave</Link>}
+            <HorizontalNav user={user} path={path} styles={styles} />
         </header>
     )
 }
