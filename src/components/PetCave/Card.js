@@ -14,9 +14,9 @@ export default function Card({ pet }) {
             <div className={styles["short-info-wrapper"]}>
                 <h3>{pet.name}</h3>
                 <ul>
-                    <li><i className="fa-solid fa-paw"></i><span className="pink bold">Breed:</span> {pet.breed}</li>
-                    <li><i className="fa-solid fa-paw"></i><span className="pink bold">Age:</span> {pet.age} </li>
-                    <li><i className="fa-solid fa-paw"></i><span className="pink bold">Gender:</span> {pet.gender} </li>
+                    <li><i className="fa-solid fa-paw"></i> <span className="pink bold">Breed:</span> {pet.breed}</li>
+                    <li><i className="fa-solid fa-paw"></i> <span className="pink bold">Age:</span> {pet.age} </li>
+                    <li><i className="fa-solid fa-paw"></i> <span className="pink bold">Gender:</span> {pet.gender} </li>
                 </ul>
             </div>
         </div>
