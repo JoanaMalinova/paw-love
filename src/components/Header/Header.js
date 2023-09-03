@@ -1,31 +1,52 @@
-import { Link } from "react-router-dom";
 import styles from "../../styles/Header.module.css";
 import { useAuth } from "../../hooks/useAuth";
 import { history } from "../../helpers/history";
-import { headerStyles } from "../../helpers/dynamic-styles";
 import { HorizontalNav } from "./HorizontalNav";
+import { Logo } from "./Logo";
+import { NavLink } from "./NavLink";
+import { navigationData } from "../../helpers/navigationData";
+import { useState } from "react";
 
 export default function Header() {
+
+    const [dropdownDisplay, setDropdownDisplay] = useState("flex");
 
     const { user } = useAuth();
 
     const path = history.location.pathname;
 
-    const { underlineStyle } = headerStyles;
+    const mql = window.matchMedia("(max-width: 1000px)");
 
-    const onLogoClickHandler = () => {
+    mql.onchange = (e) => {
+        if (e.matches) {
+            setDropdownDisplay("none")
+        } else {
+            setDropdownDisplay("flex")
+        }
+    }
+
+    const onLogoClick = () => {
         history.navigate("/");
+    }
+
+    const onDropdownClick = () => {
+
+        if (dropdownDisplay === "none") {
+            setDropdownDisplay("flex");
+        } else {
+            setDropdownDisplay("none");
+        }
     }
 
     return (
         <header >
-            <div className={styles.logo} onClick={onLogoClickHandler}>
-                <img src="http://localhost:3000/images/logo.png" alt="paw-love-logo" />
-                <p><span className="green">PAW</span><span className="pink">Love</span></p>
+            <Logo onLogoClick={onLogoClick} styles={styles} />
+            <button onClick={onDropdownClick}>{dropdownDisplay === 'block' ? <i className="fa-solid fa-angles-up fa-xl"></i> : <i className="fa-solid fa-angles-down fa-xl"></i>}</button>
+            <div className={styles["drop-down"]} style={{ "display": dropdownDisplay }}>
+                {user &&
+                    <NavLink path={path} currPath={navigationData['myCave']} styles={styles} username={user.displayName} />}
+                <HorizontalNav user={user} path={path} styles={styles} />
             </div>
-            {user &&
-                <Link style={path === "/my-cave" ? underlineStyle.undrelined : underlineStyle.none} to="/my-cave" className={styles["user-greet"]}>{user?.displayName}'s cave</Link>}
-            <HorizontalNav user={user} path={path} styles={styles} />
         </header>
     )
 }

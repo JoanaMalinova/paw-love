@@ -1,19 +1,18 @@
 export const headerStyles = {
 
     linkColorStyle: {
-        pink: {
+        active: {
             backgroundColor: "#ea2879",
             color: "white"
         }
     },
     underlineStyle: {
-        undrelined: {
+        active: {
             textDecoration: "underline"
         },
         none: {
             textDecoration: "none"
         }
-
 
     }
 }

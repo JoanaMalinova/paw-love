@@ -1,3 +1,42 @@
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3vw;
+    padding: 20px;
+    font-size: 22px;
+    font-weight: 500;
+    position: sticky;
+    top: 0px;
+    background-color: white;
+    z-index: 2;
+    white-space: nowrap;
+}
+
+header nav {
+    text-transform: uppercase;
+    margin-right: 200px;
+}
+
+header nav ul {
+    display: flex;
+    list-style-type: none;
+    padding-left: 0;
+    gap: 2.6vw;
+}
+
+header nav li a {
+    color: #ea2879;
+    border-radius: 30px;
+    padding: 10px 20px;
+}
+
+
+header nav li a:hover {
+    color: white;
+    background-color: #ea2879;
+}
+
 .logo {
     font-family: 'Stalemate', cursive;
     display: flex;
@@ -30,5 +69,157 @@
 .guest,
 .user {
     display: flex;
-    gap: 40px;
+    gap: 2.6vw;
+}
+
+.drop-down {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3vw;
+}
+
+header button {
+    all: unset;
+    display: none;
+    color: #ea2879;
+}
+
+header button:hover {
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 1600px) {
+
+    header {
+        padding: 20px;
+        font-size: 18px;
+    }
+
+    .user-greet {
+        font-size: 23px;
+    }
+
+    .logo {
+        margin-left: 100px;
+    }
+
+    header nav {
+        margin-right: 100px;
+    }
+
+    .drop-down {
+        gap: 3vw;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .logo {
+        margin-left: 20px;
+    }
+
+    header nav {
+        margin-right: 40px;
+    }
+
+    .guest,
+    .user {
+        gap: 1vw;
+    }
+
+    header nav ul {
+        display: flex;
+        list-style-type: none;
+        padding-left: 0;
+        gap: 1vw;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+    }
+
+    header nav {
+        margin-right: 0;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header nav ul div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo {
+        margin: 0;
+    }
+
+    .drop-down {
+        flex-direction: column;
+        gap: 3vh;
+        width: 100%;
+        padding: 4vh 0;
+        text-align: center;
+    }
+
+    header a {
+        display: inline-block;
+    }
+
+    .drop-down * {
+        width: 100%;
+    }
+
+    header button {
+        display: block;
+        position: absolute;
+        right: 3vw;
+        top: 2rem;
+    }
+
+    header button:hover {
+        cursor: pointer;
+    }
+
+    .guest,
+    .user,
+    header nav ul {
+        gap: 1.6rem;
+    }
+
+    .drop-down {
+        padding: 1rem 0;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+
+    header {
+        font-size: 18px;
+    }
+
+    .drop-down * {
+        text-align: left;
+    }
+
+    .guest,
+    .user,
+    header nav ul {
+        gap: 0.5rem;
+    }
+
+    .drop-down {
+        padding-top: 1rem;
+        padding-bottom: 0;
+    }
+
 }
