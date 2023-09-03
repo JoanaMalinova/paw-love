@@ -90,22 +90,20 @@ header button:hover {
 }
 
 @media screen and (max-width: 1600px) {
-
     header {
-        padding: 20px;
-        font-size: 18px;
+        font-size: 20px;
     }
 
     .user-greet {
-        font-size: 23px;
+        font-size: 24px;
     }
 
     .logo {
-        margin-left: 100px;
+        margin-left: 80px;
     }
 
     header nav {
-        margin-right: 100px;
+        margin-right: 80px;
     }
 
     .drop-down {
@@ -114,6 +112,15 @@ header button:hover {
 }
 
 @media screen and (max-width: 1200px) {
+
+    header {
+        font-size: 18px;
+    }
+
+    .user-greet {
+        font-size: 23px;
+    }
+
     .logo {
         margin-left: 20px;
     }
