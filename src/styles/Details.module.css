@@ -145,6 +145,9 @@
     border-top-left-radius: 0;
     max-width: fit-content;
     margin-left: 2vw;
+    -webkit-box-shadow: 10px 10px 10px -4px rgba(0, 0, 0, 0.301);
+    -moz-box-shadow: 10px 10px 10px -4px rgba(0, 0, 0, 0.301);
+    box-shadow: 10px 10px 10px -4px rgba(0, 0, 0, 0.301);
 }
 
 .comment-box p.main {
