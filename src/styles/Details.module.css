@@ -129,8 +129,12 @@
 .details-wrapper ul.comment-holder {
     align-items: flex-start;
     height: 100%;
+    width: 100%;
     padding: 4% 10%;
-    gap: 16px;
+}
+
+.comment-list-item {
+    width: 100%;
 }
 
 .comment-box {
@@ -138,6 +142,9 @@
     padding: 2px 12px 0px 12px;
     background-color: white;
     border-radius: 100px;
+    border-top-left-radius: 0;
+    max-width: fit-content;
+    margin-left: 2vw;
 }
 
 .comment-box p.main {
