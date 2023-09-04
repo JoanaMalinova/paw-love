@@ -1,6 +1,6 @@
 .wrapper {
     background-color: #a6db67;
-    height: 80vh;
+    min-height: 80vh;
     color: white;
     display: flex;
     padding: 0px 150px 0px 240px;
@@ -40,20 +40,43 @@
 
 }
 
-@media (max-width: 775px) {
+@media (max-width: 1000px) {
 
     .wrapper {
         flex-direction: column;
-        justify-content: space-around;
-
+        justify-content: space-evenly;
+        padding: 0;
     }
+
+    .wrapper .info {
+        width: 90vw;
+        margin-top: 20px;
+    }
+
+    .img-holder {
+        width: 100%;
+        height: auto;
+    }
+
+    .img-holder img {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 500px) {
 
     .wrapper .info {
         width: 90vw;
         font-size: 18px;
     }
 
+}
+
+@media (max-width: 500px) {
+
     .wrapper .info {
-        margin-top: 20px;
+        width: 90vw;
+        font-size: 14px;
     }
 }
