@@ -1,17 +1,21 @@
 .outer-wrapper {
     width: auto;
-    min-height: 80vh;
-    padding: 4vh 0 10vh 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 4vh 0 6vh 0;
 }
 
 .details-wrapper {
     background-color: #a6db67;
     padding: 30px;
     width: 70vw;
-    margin: auto;
+    height: calc(width/1.8);
     border-radius: 30px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-size: 24px;
     -webkit-box-shadow: 10px 10px 36px -4px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 10px 10px 36px -4px rgba(0, 0, 0, 0.75);
@@ -21,11 +25,14 @@
 .profile-pic {
     flex-basis: 50%;
     border-radius: 50%;
+    height: 95%;
+    width: auto;
     aspect-ratio: 1 / 1;
-    max-height: 70vh;
-    max-width: 70vw;
     overflow: hidden;
     outline: 10px solid #ea2879;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .profile-pic img {
@@ -37,6 +44,9 @@
 .details-info-wrapper {
     flex-basis: 50%;
     color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .details-wrapper ul {
@@ -67,6 +77,11 @@
     text-align: center;
     font-weight: 800;
     margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 
 .likes-and-comments {
@@ -169,4 +184,119 @@
 
 .comment {
     font-style: italic;
+}
+
+@media screen and (max-width: 1500px) {
+
+    .details-wrapper {
+        width: 80vw;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+
+    .details-wrapper {
+        width: 90vw;
+    }
+
+}
+
+@media screen and (max-width: 1000px) {
+
+    .details-wrapper {
+        width: 85vw;
+        flex-direction: column;
+        padding-top: 8vh;
+        padding-bottom: 12vh;
+    }
+
+    .profile-pic {
+        width: 80%;
+        height: auto;
+    }
+
+    .button-div,
+    .edit-del-btn-wrapper {
+        width: 100%;
+        padding-top: 10vh;
+    }
+
+    .bottom-div {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+}
+
+@media screen and (max-width: 1000px) {
+
+    .details-wrapper {
+        padding: 5vh;
+    }
+
+    .profile-pic {
+        width: 80%;
+        height: auto;
+    }
+
+    .button-div {
+        padding-top: 5vh;
+    }
+
+    .edit-del-btn-wrapper {
+
+        padding-top: 0;
+    }
+
+    ul {
+        padding: 0;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+
+    .details-wrapper {
+        width: 90vw;
+        font-size: 20px;
+    }
+
+    .button-div {
+        font-size: 24px;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+
+    .profile-pic {
+        width: 90%;
+    }
+
+    .details-wrapper {
+        font-size: 18px;
+        padding: 5vh 2vh;
+    }
+
+    .button-div {
+        font-size: 22px;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+
+    .details-wrapper {
+        font-size: 16px;
+        padding: 3vh 2vh;
+    }
+
+    .details-wrapper ul {
+        gap: 0px
+    }
+
+    .button-div {
+        padding-top: 0;
+    }
+
 }
