@@ -48,6 +48,7 @@ main {
     padding: 6px 22px;
     color: white;
     margin-top: 10px;
+    transition: all 0.3s ease-in;
 }
 
 .submit-btn:hover {

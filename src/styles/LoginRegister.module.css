@@ -28,6 +28,7 @@
 .field input {
     width: 16vw;
     font-size: 20px;
+    transition: all 0.3s ease-out;
 }
 
 .form-wrapper .field {
