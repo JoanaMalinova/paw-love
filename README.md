@@ -17,24 +17,42 @@ Main navigation in header
 Home page is static, has a link to register page for guests
 <h4>3.3. Petcave (catalog) page</h4> 
 Has all posted stories. Guest and users can view and click on them and access details page from there.   
- <h4>3.4. Details</h4> - opens when story crd is clicked
+ <h4>3.4. Details</h4>
+ opens when story card is clicked
     <ul>
-        <li>for guests - guests can view basic information and likes and comment count</li>   
+        <li>for guests - guests can view basic information, likes and comment count</li>   
         <li>for users - users can additionally like and unlike, comment and see all comments   </li>
         <li>for owners - can edit and delete own stories</li>
     </ul>
 <h4>3.5. Owner's cave (profile page)</h4>
-A catalog with all of the users created stories
-<h4>3.6. Authentication pages</h4> - login and register
+A catalog with all of the users created stories.
+<h4>3.6. Authentication pages</h4> Login page and Register page
     <ul>
-      <li>Login page</li>
-      <li>Register page</li>    
+      <li>Login validation- 
+        <ul>
+          <li>"Invalid email or password"</li>   
+          <li>"All fields are required"</li>        
+        </ul>
+       </li>
+      <li>Register validation 
+        <ul>
+          <li>"All fields are required"</li>   
+          <li>"Password and confirm password don't match"</li>   
+          <li>"Email already exists"</li>   
+          <li>"Username must be at least three letters long!"</li>   
+        </ul>
+      </li>    
     </ul>
 
-<h4>3.7. </h4>  
+<h4>3.7.Create page</h4>  
+A form with basic information about the pet. If all fields are filled, user creates a story in the catalog page.
+<h4>3.7.Edit page</h4>  
+Owners can edit their stories form detail page upon edit button click.
 <h3>4. In development:</h3>
-
-<h3>5. Conslusion:</h3>   
+Making app responsive is the next step in developement.
+App is partly responsive, still needs work done. Forms are not resposive.
+<h3>5. Conslusion:</h3> 
+This is my first project with React, which i have made entirely by myself. I am really grateful that SoftUni left the topic open and gave its students the freedom to decide how to have the project done. Altough it is far from perfect I think it is a good start.
 
 
 
