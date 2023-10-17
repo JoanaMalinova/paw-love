@@ -51,7 +51,7 @@ Owners can edit their stories form detail page upon edit button click.
 <h3>4. In development:</h3>
 Making app responsive is the next step in developement.
 App is partly responsive, still needs work done. Forms are not resposive.
-<h3>5. Conslusion:</h3> 
+<h3>5. Conclusion:</h3> 
 This is my first project with React, which i have made entirely by myself. I am really grateful that SoftUni left the topic open and gave its students the freedom to decide how to have the project done. Altough it is far from perfect I think it is a good start.
 
 
