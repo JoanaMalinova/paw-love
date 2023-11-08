@@ -69,7 +69,11 @@ export default function Register() {
                     </div>
                 </fieldset>
             </form>
-            <img src="https://c4.wallpaperflare.com/wallpaper/2/880/843/aquariums-fish-white-background-spikes-wallpaper-preview.jpg" alt="gold-fish-in-bowl" />
+            <img
+                src="https://c4.wallpaperflare.com/wallpaper/2/880/843/aquariums-fish-white-background-spikes-wallpaper-preview.jpg"
+                alt="gold-fish-in-bowl"
+                className={styles["fish-bowl"]}
+            />
         </div>
     )
 }

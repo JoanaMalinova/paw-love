@@ -4,6 +4,8 @@
     align-items: center;
     gap: 10px;
     padding-top: 24px;
+    position: relative;
+    min-height: 80vh;
 }
 
 .form-wrapper form {
@@ -26,7 +28,7 @@
 }
 
 .field input {
-    width: 16vw;
+    width: 100%;
     font-size: 20px;
     transition: all 0.3s ease-out;
 }
@@ -37,9 +39,21 @@
     gap: 20px;
 }
 
+.form-wrapper .field > div {
+    width: 80%;
+}
+
 .form-wrapper img {
-    width: 30vw;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 25vw;
     height: auto;
+}
+
+.form-wrapper .fish-bowl {
+    bottom: 20%;
+    right: 5%;
 }
 
 .form-wrapper a {
@@ -60,4 +74,94 @@
     color: #ea2879;
     font-size: 18px;
     text-align: center;
+}
+
+@media screen and (max-width: 1200px) {
+    .form-wrapper .field {
+        width: 35vw;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .form-wrapper .fish-bowl {
+        width: 20vw;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .form-wrapper .field {
+        width: 40vw;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .form-wrapper form {
+        margin: 0px 0px 10% 20%;
+    }
+
+  
+
+    .field {
+        font-size: 20px;
+    }
+
+    .form-wrapper a {
+        font-size: 16px;
+    }
+
+    .field input {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .form-wrapper .field {
+        width: 50vw;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .form-wrapper form {
+        margin: 0px 0px 10% 10%;
+    }
+
+    .field {
+        font-size: 20px;
+    }
+
+    .form-wrapper a {
+        font-size: 16px;
+    }
+
+    .field input {
+        font-size: 18px;
+    }
+
+    .form-wrapper img {
+        width: 30vw;
+    }
+
+    .form-wrapper .field > div {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .form-wrapper .field {
+        width: 70vw;
+    }
+
+    .form-wrapper img {
+        display: none;
+    }
+
+    .form-wrapper form {
+        margin: 0px auto 10%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .form-wrapper .field {
+        width: 85vw;
+    }
 }
