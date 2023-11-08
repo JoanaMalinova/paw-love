@@ -11,12 +11,10 @@
 
 .central-wrapper {
     width: 50vw;
-    height: fit-content;
+    height: 90vh;
 }
 
-
 /* **************Description wrapper*********** */
-
 
 .descr-wrapper {
     background-color: #ea2879;
@@ -48,11 +46,7 @@
     color: white;
 }
 
-
-
 /* ************Outer form and input wrappers************ */
-
-
 
 .field {
     height: 75%;
@@ -81,7 +75,7 @@
     gap: 2vw;
 }
 
-.create-field>div {
+.create-field > div {
     width: 42%;
     height: 100%;
 }
@@ -125,7 +119,6 @@
     width: 100%;
     display: flex;
     align-items: center;
-
 }
 
 .gender-wrapper .inner-gender-wrapper div {
@@ -142,32 +135,143 @@
     width: 2vh;
 }
 
-
 /* *************Right conatiner************ */
 
 textarea {
     font-size: 20px;
     color: rgba(0, 0, 0, 0.691);
-    max-width: 100%;
-    max-height: 100%;
+    width: 100%;
+    height: 87%;
 }
 
-
-
 /* **************Images**************** */
-
 
 .create-wrapper img {
     width: 20vw;
 }
 
-
 /* ***********Error message**************** */
-
-
 
 .message {
     color: #ea2879;
     font-size: 18px;
     text-align: center;
 }
+
+@media screen and (max-width: 1200px) {
+    .central-wrapper {
+        width: unset;  
+        height: 80vh;           
+    }
+
+    .left-container {
+        height: 100%;
+    }
+
+    .descr-wrapper p{
+        padding: 0 5%;
+        line-height: 1.5;
+    }
+
+    .central-wrapper label,
+    .left-container p {
+        font-size: 20px;
+    }
+
+    .inner-div input,
+    textarea {
+        font-size: 17px;
+    }
+
+    .create-wrapper button,
+    .create-wrapper legend {
+        font-size: 20px;
+    }
+
+    .create-wrapper h2 {
+        font-size: 22px;
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .parrot-img {
+        display: none;
+    }
+
+    .create-wrapper {
+        margin-left: 5%;
+    }
+}
+
+
+@media screen and (max-width: 750px) {
+    .bunny-img {
+        display: none;
+    } 
+
+    .create-wrapper {
+        margin-right: 5%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    .descr-wrapper{
+        height: unset;
+    }
+
+    .central-wrapper { 
+        height: 140vh;           
+    }
+
+    .bunny-img {
+        display: none;
+    } 
+
+    .create-wrapper {
+        margin-right: 5%;
+    }
+
+    .create-field {
+       flex-direction: column;  
+       align-items: center; 
+    }
+
+    .create-field > div {
+        width: 80%;   
+        display: flex;  
+        flex-direction: column;           
+    }   
+
+    .inner-div input{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .central-wrapper label,
+    .left-container p {
+        font-size: 18px;
+    }
+
+    .inner-div input,
+    textarea {
+        font-size: 16px;
+    }
+
+    .create-wrapper button,
+    .create-wrapper legend {
+        font-size: 18px;
+    }
+
+    .create-wrapper h2 {
+        font-size: 19px;
+    }
+
+    
+    .create-field > div {
+        width: 90%;          
+    }   
+}
+

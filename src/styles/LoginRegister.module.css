@@ -12,6 +12,10 @@
     margin: 0px 0px 10% 32%;
 }
 
+.form-wrapper textarea{
+    height: 120vw;
+}
+
 .field {
     display: flex;
     align-items: center;
@@ -98,8 +102,6 @@
     .form-wrapper form {
         margin: 0px 0px 10% 20%;
     }
-
-  
 
     .field {
         font-size: 20px;
