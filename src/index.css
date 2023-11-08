@@ -145,3 +145,11 @@ textarea:focus {
     outline: none !important;
     border: 2px solid #ea2879;
 }
+
+@media screen and (max-width: 1000px){
+
+    .edit-wrapper {
+        width: unset;
+        margin-right: 5%;
+    }
+}
