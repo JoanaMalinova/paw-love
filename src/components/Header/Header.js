@@ -11,6 +11,7 @@ import { DropDownContext } from "../../contexts/DropdownDisplayContext";
 export default function Header() {
 
     const [dropdownDisplay, setDropdownDisplay] = useState("flex");
+    const [mediaSize, setMediaSize] = useState("");
 
     const { user } = useAuth();
 
@@ -19,10 +20,13 @@ export default function Header() {
     const mql = window.matchMedia("(max-width: 1000px)");
 
     mql.onchange = (e) => {
+
         if (e.matches) {
-            setDropdownDisplay("none")
+            setDropdownDisplay("none");
+            setMediaSize("smaller");
         } else {
-            setDropdownDisplay("flex")
+            setDropdownDisplay("flex");
+            setMediaSize("larger");
         }
     }
 
@@ -40,7 +44,7 @@ export default function Header() {
     }
 
     return (
-        <DropDownContext.Provider value={setDropdownDisplay}>
+        <DropDownContext.Provider value={{setDropdownDisplay, mediaSize}}>
             <header >
                 <Logo onLogoClick={onLogoClick} styles={styles} />
                 <button onClick={onDropdownClick}>{dropdownDisplay === 'flex' ? <i className="fa-solid fa-angles-up fa-xl"></i> : <i className="fa-solid fa-angles-down fa-xl"></i>}</button>
