@@ -266,6 +266,10 @@
         font-size: 24px;
     }
 
+    .bottom-div {
+        height: unset;
+    }
+
 }
 
 @media screen and (max-width: 500px) {
@@ -297,7 +301,12 @@
     }
 
     .button-div {
-        padding-top: 0;
+        padding: 35px 0 20px;
+    }
+
+    .bottom-div {
+        width: 70%;       
+        justify-content: space-between;
     }
 
 }

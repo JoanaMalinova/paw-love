@@ -212,8 +212,17 @@ header button:hover {
 }
 
 @media screen and (max-width: 768px) {
+
     header {
         font-size: 18px;
+    }
+
+    .drop-down{
+        gap: 10px;
+    }
+
+    .drop-down > a{
+        padding: 0 10px;
     }
 
     .guest,

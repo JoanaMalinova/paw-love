@@ -42,7 +42,7 @@ export default function Header() {
 
     return (
         <DropDownContext.Provider value={{ setDropdownDisplay, matches }}>
-            <header >
+            <header>
                 <Logo onLogoClick={onLogoClick} styles={styles} />
                 <button onClick={onDropdownClick}>{dropdownDisplay === 'flex' ? <i className="fa-solid fa-angles-up fa-xl"></i> : <i className="fa-solid fa-angles-down fa-xl"></i>}</button>
                 <div className={styles["drop-down"]} style={{ "display": dropdownDisplay }}>
