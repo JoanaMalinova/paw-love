@@ -18,17 +18,30 @@
 
 .modal.comment-modal {
     border-radius: 30px;
-    padding: 10px;
+    padding: 20px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 30vw;
-    height: 50vh;
-    overflow-y: hidden
+    width: 450px;
+    height: 400px;
+    overflow-y: hidden;
+}
+
+.modal.comment-modal > div{
+    height: 100%;
+    width: 100%;
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal.comment-modal h3{
+    font-size: 26px;
 }
 
 .modal.comment-modal form {
     display: flex;
+    height: 100%;
     flex-direction: column;
     align-items: center;
     gap: 1.2vh;
@@ -38,15 +51,22 @@
     left: 0;
     top: 0;
     width: 100%;
-    height: 100%
+    height: 100%;
+    font-size: 25px;
+}
+
+.modal.delete-modal h3{
+    font-size: 25px;
 }
 
 .modal-content {
     background-color: #a6db67;
-    margin: 15% auto;
+    margin: 50vh auto 0;
+    transform: translateY(-50%);
     padding: 20px;
     border: 4px solid #ea2879;
-    width: 30%;
+    width: 450px;
+    height: 220px;
     border-radius: 30px;
     color: white;
 }
@@ -55,6 +75,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    height: 100%;
+    align-items: center;
 }
 
 .comment-close {
@@ -83,4 +105,37 @@
     display: flex;
     gap: 20px;
     justify-content: center;
+}
+
+@media screen and (max-width: 600px) {
+
+    .modal.delete-modal {
+        font-size: 16px;
+    }
+    
+    .modal.delete-modal h3{
+        font-size: 18px;
+    }
+
+    .modal-content {       
+        width: 300px;
+        height: 150px;       
+    }
+}
+
+@media screen and (max-width: 400px) {
+
+    .modal.delete-modal {
+        font-size: 14px;
+    }
+    
+    .modal.delete-modal h3{
+        font-size: 18px;
+    }
+
+    .modal-content {       
+        width: 280px;
+        height: 160px;       
+    }
+
 }

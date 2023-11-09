@@ -46,9 +46,7 @@ export function CommentModal({ id, userId, username, display, setDisplay }) {
                         <label htmlFor="comment" />
                         <textarea
                             name="comment"
-                            id="comment"
-                            cols="30"
-                            rows="8"
+                            id="comment"                           
                             value={formValues.comment || ""}
                             onChange={onChangeHandler}
                         >
