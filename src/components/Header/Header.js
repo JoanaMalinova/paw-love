@@ -7,26 +7,24 @@ import { NavLink } from "./NavLink";
 import { navigationData } from "../../helpers/navigationData";
 import { useEffect, useState } from "react";
 import { DropDownContext } from "../../contexts/DropdownDisplayContext";
+import { useMediaQuery } from 'usehooks-ts';
 
 export default function Header() {
 
     const [dropdownDisplay, setDropdownDisplay] = useState("flex");
-    const [mediaSize, setMediaSize] = useState("");
-
     const { user } = useAuth();
+    const matches = useMediaQuery('(max-width: 1000px)');
 
     useEffect(() => {
-        
-        if (window.innerWidth < 1000) {
-            setMediaSize("smaller");
+
+        if (matches) {
             setDropdownDisplay("none");
-        } else {
-            setMediaSize("larger");
-            setDropdownDisplay("flex");
+        } else {          
+            setDropdownDisplay("flex")
         }
 
-    }, [mediaSize]);    
-   
+    },[matches])
+
     const path = history.location.pathname;
 
     const onLogoClick = () => {
@@ -43,7 +41,7 @@ export default function Header() {
     }
 
     return (
-        <DropDownContext.Provider value={{ setDropdownDisplay, mediaSize }}>
+        <DropDownContext.Provider value={{ setDropdownDisplay, matches }}>
             <header >
                 <Logo onLogoClick={onLogoClick} styles={styles} />
                 <button onClick={onDropdownClick}>{dropdownDisplay === 'flex' ? <i className="fa-solid fa-angles-up fa-xl"></i> : <i className="fa-solid fa-angles-down fa-xl"></i>}</button>

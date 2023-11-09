@@ -5,14 +5,14 @@ import { DropDownContext } from "../../contexts/DropdownDisplayContext";
 
 export const NavLink = ({ path, currPath, styles, username }) => {
 
-    const {setDropdownDisplay, mediaSize} = useContext(DropDownContext);
+    const {setDropdownDisplay, matches} = useContext(DropDownContext);
 
     const { linkColorStyle, underlineStyle } = headerStyles;
     const currStyle = path === "/my-cave" ? underlineStyle : linkColorStyle;
 
     const onClick = ()=>{
-        
-        if(mediaSize === "smaller"){
+
+        if(matches){
             setDropdownDisplay("none")
         }      
     }
