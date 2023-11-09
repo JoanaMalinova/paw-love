@@ -207,7 +207,7 @@ header button:hover {
     }
 
     .drop-down {
-        padding: 1rem 0;
+        padding: 1rem 10px 15px; 
     }
 }
 
@@ -223,7 +223,6 @@ header button:hover {
     }
 
     .drop-down {
-        text-align: left;
-        padding: 1rem 0 15px;       
+        text-align: left;              
     }
 }

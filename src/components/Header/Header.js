@@ -5,7 +5,7 @@ import { HorizontalNav } from "./HorizontalNav";
 import { Logo } from "./Logo";
 import { NavLink } from "./NavLink";
 import { navigationData } from "../../helpers/navigationData";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DropDownContext } from "../../contexts/DropdownDisplayContext";
 
 export default function Header() {
@@ -15,20 +15,19 @@ export default function Header() {
 
     const { user } = useAuth();
 
-    const path = history.location.pathname;
-
-    const mql = window.matchMedia("(max-width: 1000px)");
-
-    mql.onchange = (e) => {
-
-        if (e.matches) {
-            setDropdownDisplay("none");
+    useEffect(() => {
+        
+        if (window.innerWidth < 1000) {
             setMediaSize("smaller");
+            setDropdownDisplay("none");
         } else {
-            setDropdownDisplay("flex");
             setMediaSize("larger");
+            setDropdownDisplay("flex");
         }
-    }
+
+    }, [mediaSize]);    
+   
+    const path = history.location.pathname;
 
     const onLogoClick = () => {
         history.navigate("/");
@@ -44,7 +43,7 @@ export default function Header() {
     }
 
     return (
-        <DropDownContext.Provider value={{setDropdownDisplay, mediaSize}}>
+        <DropDownContext.Provider value={{ setDropdownDisplay, mediaSize }}>
             <header >
                 <Logo onLogoClick={onLogoClick} styles={styles} />
                 <button onClick={onDropdownClick}>{dropdownDisplay === 'flex' ? <i className="fa-solid fa-angles-up fa-xl"></i> : <i className="fa-solid fa-angles-down fa-xl"></i>}</button>
@@ -54,10 +53,10 @@ export default function Header() {
                             path={path}
                             currPath={navigationData['myCave']}
                             styles={styles}
-                            username={user.displayName}                            
+                            username={user.displayName}
                         />
                     }
-                    <HorizontalNav user={user} path={path} styles={styles}/>
+                    <HorizontalNav user={user} path={path} styles={styles} />
                 </div>
             </header>
         </DropDownContext.Provider>
