@@ -1,9 +1,9 @@
 import { navigationData } from "../../helpers/navigationData";
 import { NavLink } from "./NavLink";
 
-export const HorizontalNav = ({ user, path, styles }) => {
+export const HorizontalNav = ({ user, path, styles}) => {
 
-    return (
+    return (       
         <nav>
             <ul>
                 <li><NavLink path={path} currPath={navigationData.home} /></li>
@@ -17,7 +17,8 @@ export const HorizontalNav = ({ user, path, styles }) => {
                     <div className={styles.user}>
                         <li><NavLink path={path} currPath={navigationData.create} /></li>
                         <li><NavLink path={path} currPath={navigationData.logout} /></li>
-                    </div>}
+                    </div>
+                }
             </ul>
         </nav>
     )

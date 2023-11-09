@@ -101,9 +101,7 @@ export default function CreatePost({ submitHandler }) {
                             <textarea
                                 style={styledInputs.includes("petStory") ? outlineStyle.pink : outlineStyle.unset}
                                 name="petStory"
-                                id="petStory"
-                                // cols="38"
-                                // rows="12"
+                                id="petStory"                              
                                 placeholder="Whatever comes to mind. Don't be shy!"
                                 value={data.petStory}
                                 onChange={onChangeHandler} >

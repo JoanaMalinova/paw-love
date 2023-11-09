@@ -32,14 +32,13 @@ header nav li a {
     transition: all 0.3s ease-in-out;
 }
 
-
 header nav li a:hover {
     color: white;
     background-color: #ea2879;
 }
 
 .logo {
-    font-family: 'Stalemate', cursive;
+    font-family: "Stalemate", cursive;
     display: flex;
     align-items: center;
     font-size: 44px;
@@ -50,7 +49,6 @@ header nav li a:hover {
 .logo:hover {
     cursor: pointer;
 }
-
 
 .logo p {
     font-weight: 600;
@@ -113,7 +111,6 @@ header button:hover {
 }
 
 @media screen and (max-width: 1200px) {
-
     header {
         font-size: 18px;
     }
@@ -144,6 +141,12 @@ header button:hover {
 }
 
 @media screen and (max-width: 1000px) {
+    .drop-down {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        background-color: rgba(255, 255, 255, 0.9);
+    }
 
     header {
         flex-direction: column;
@@ -206,17 +209,11 @@ header button:hover {
     .drop-down {
         padding: 1rem 0;
     }
-
 }
 
 @media screen and (max-width: 768px) {
-
     header {
         font-size: 18px;
-    }
-
-    .drop-down * {
-        text-align: left;
     }
 
     .guest,
@@ -226,8 +223,7 @@ header button:hover {
     }
 
     .drop-down {
-        padding-top: 1rem;
-        padding-bottom: 0;
+        text-align: left;
+        padding: 1rem 50px 15px;       
     }
-
 }

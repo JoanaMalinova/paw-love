@@ -24,7 +24,7 @@ body {
 }
 
 
-*/ img,
+img,
 picture,
 video,
 canvas,
@@ -76,7 +76,6 @@ main {
 .bold {
     font-weight: 500;
     text-transform: uppercase;
-
 }
 
 .fa-paw {
@@ -89,7 +88,7 @@ main {
 
 .edit-wrapper {
     width: 50vw;
-    height: fit-content
+    height: fit-content;
 }
 
 

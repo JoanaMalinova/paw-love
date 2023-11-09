@@ -23,8 +23,6 @@ export function useForm(initialValues, onSubmitHandler, userId, petId) {
         if (!styledValues.length) {
             const result = await onSubmitHandler(formValues, userId, petId);
 
-            console.log(result);
-
             if (result === "Firebase: Error (auth/wrong-password)." ||
                 result === "Firebase: Error (auth/invalid-email).") {
                 setMessage("Invalid email or password!");

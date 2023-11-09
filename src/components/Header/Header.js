@@ -6,6 +6,7 @@ import { Logo } from "./Logo";
 import { NavLink } from "./NavLink";
 import { navigationData } from "../../helpers/navigationData";
 import { useState } from "react";
+import { DropDownContext } from "../../contexts/DropdownDisplayContext";
 
 export default function Header() {
 
@@ -39,14 +40,22 @@ export default function Header() {
     }
 
     return (
-        <header >
-            <Logo onLogoClick={onLogoClick} styles={styles} />
-            <button onClick={onDropdownClick}>{dropdownDisplay === 'flex' ? <i className="fa-solid fa-angles-up fa-xl"></i> : <i className="fa-solid fa-angles-down fa-xl"></i>}</button>
-            <div className={styles["drop-down"]} style={{ "display": dropdownDisplay }}>
-                {user &&
-                    <NavLink path={path} currPath={navigationData['myCave']} styles={styles} username={user.displayName} />}
-                <HorizontalNav user={user} path={path} styles={styles} />
-            </div>
-        </header>
+        <DropDownContext.Provider value={setDropdownDisplay}>
+            <header >
+                <Logo onLogoClick={onLogoClick} styles={styles} />
+                <button onClick={onDropdownClick}>{dropdownDisplay === 'flex' ? <i className="fa-solid fa-angles-up fa-xl"></i> : <i className="fa-solid fa-angles-down fa-xl"></i>}</button>
+                <div className={styles["drop-down"]} style={{ "display": dropdownDisplay }}>
+                    {user &&
+                        <NavLink
+                            path={path}
+                            currPath={navigationData['myCave']}
+                            styles={styles}
+                            username={user.displayName}                            
+                        />
+                    }
+                    <HorizontalNav user={user} path={path} styles={styles}/>
+                </div>
+            </header>
+        </DropDownContext.Provider>
     )
 }
