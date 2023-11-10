@@ -28,7 +28,8 @@ Has all posted stories. Guest and users can view and click on them and access de
 A catalog with all of the users created stories.
 <h4>3.6. Authentication pages</h4> Login page and Register page
     <ul>
-      <li>Login validation- 
+      <li>Login validation
+        USER: didi@abv.bg PASSWORD:123456 can be used to check out the app after login.
         <ul>
           <li>"Invalid email or password"</li>   
           <li>"All fields are required"</li>        
