@@ -11,7 +11,7 @@
     background-color: #a6db67;
     padding: 30px;
     width: 70vw;
-    height: calc(width/1.8);
+    /* height: 54vw; */
     border-radius: 30px;
     display: flex;
     justify-content: space-between;
@@ -167,7 +167,7 @@
 }
 
 .comment-box p.main {
-    font-size: 20px;
+    font-size: 16px;
     padding: 8px 18px 0 18px;
     text-align: justify;
     line-height: 1.2;
@@ -181,10 +181,6 @@
 
 .username {
     font-weight: 600;
-}
-
-.comment {
-    font-style: italic;
 }
 
 @media screen and (max-width: 1500px) {
@@ -268,6 +264,14 @@
 
     .bottom-div {
         height: unset;
+    }
+
+    .comment-box p.main {       
+        padding: 8px 8px 0 8px;       
+    }
+
+    .details-wrapper ul.comment-holder {       
+        padding: 5%;
     }
 
 }

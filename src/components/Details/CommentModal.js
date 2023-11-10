@@ -27,8 +27,7 @@ export function CommentModal({ id, userId, username, display, setDisplay }) {
     }
 
     const onCloseClick = (ev) => {
-        if (ev.target === ev.currentTarget) {
-            // ev.stopPropagation();
+        if (ev.target === ev.currentTarget) {            
             setDisplay('none');
         }       
     }
