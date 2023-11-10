@@ -27,13 +27,10 @@ export function CommentModal({ id, userId, username, display, setDisplay }) {
     }
 
     const onCloseClick = (ev) => {
-        if (ev.target.classList.contains('Modal_outer-wrapper__svCXZ') ||
-            ev.target.classList.contains('Modal_close__uQPKi') ||
-            ev.target.classList.contains('Modal_outer-wrapper__svCXZ')) {
-
-            ev.stopPropagation();
+        if (ev.target === ev.currentTarget) {
+            // ev.stopPropagation();
             setDisplay('none');
-        }
+        }       
     }
 
     return (

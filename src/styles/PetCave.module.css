@@ -155,6 +155,10 @@
         width: 50vw;
     }
 
+    .cave-wrapper .card ul span{
+        font-size: 18px;
+    }
+
 }
 
 @media screen and (max-width: 350px) {
