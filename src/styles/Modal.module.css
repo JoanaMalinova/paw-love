@@ -109,6 +109,20 @@
 
 @media screen and (max-width: 600px) {
 
+    .modal.comment-modal {       
+        padding: 10px 15px;
+        width: 350px;
+        height: 320px;
+    }
+    
+    .modal.comment-modal > div{       
+        font-size: 20px;      
+    }
+    
+    .modal.comment-modal h3{
+        font-size: 22px;
+    }
+   
     .modal.delete-modal {
         font-size: 16px;
     }
@@ -124,6 +138,20 @@
 }
 
 @media screen and (max-width: 400px) {
+
+    .modal.comment-modal {       
+        padding: 10px 15px;
+        width: 90vw;
+        height: 110vw;
+    }
+    
+    .modal.comment-modal > div{       
+        font-size: 20px;      
+    }
+    
+    .modal.comment-modal h3{
+        font-size: 22px;
+    }
 
     .modal.delete-modal {
         font-size: 14px;
